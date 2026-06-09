@@ -79,9 +79,9 @@
             transition: border-color 0.4s ease;
         }
 
-        .glass-box:hover {
-            border-color: rgba(255, 255, 255, 0.1);
-        }
+            .glass-box:hover {
+                border-color: rgba(255, 255, 255, 0.1);
+            }
 
         /* ESTRUCTURA PRINCIPAL */
         nav {
@@ -161,11 +161,11 @@
             transition: all 0.5s ease;
         }
 
-        .run-btn:hover {
-            background-color: var(--cyan-400);
-            transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(6, 182, 212, 0.3);
-        }
+            .run-btn:hover {
+                background-color: var(--cyan-400);
+                transform: scale(1.05);
+                box-shadow: 0 0 30px rgba(6, 182, 212, 0.3);
+            }
 
         /* CLASES CSS PARA ENLACES SOCIALES */
         .btn-social {
@@ -182,20 +182,20 @@
             background: rgba(34, 211, 238, 0.02);
         }
 
-        .btn-social-cyan:hover {
-            border-color: var(--cyan-400);
-            background: rgba(34, 211, 238, 0.08);
-        }
+            .btn-social-cyan:hover {
+                border-color: var(--cyan-400);
+                background: rgba(34, 211, 238, 0.08);
+            }
 
         .btn-social-zinc {
             color: var(--zinc-400);
             border: 1px solid var(--zinc-800);
         }
 
-        .btn-social-zinc:hover {
-            color: #fff;
-            border-color: var(--zinc-500);
-        }
+            .btn-social-zinc:hover {
+                color: #fff;
+                border-color: var(--zinc-500);
+            }
 
         /* HOVER SEGURO PARA EL BLOG */
         .log-card {
@@ -212,11 +212,11 @@
             cursor: pointer;
         }
 
-        .log-card:hover {
-            border-color: rgba(34, 211, 238, 0.25);
-            background: rgba(34, 211, 238, 0.01);
-            transform: translateX(4px);
-        }
+            .log-card:hover {
+                border-color: rgba(34, 211, 238, 0.25);
+                background: rgba(34, 211, 238, 0.01);
+                transform: translateX(4px);
+            }
 
         .scanline {
             width: 100%;
@@ -229,8 +229,13 @@
         }
 
         @keyframes scanline {
-            0% { top: -100%; }
-            100% { top: 100%; }
+            0% {
+                top: -100%;
+            }
+
+            100% {
+                top: 100%;
+            }
         }
 
         /* Estilos menores de texto */
@@ -241,7 +246,9 @@
         }
 
         @media (min-width: 768px) {
-            h1 { font-size: 72px; }
+            h1 {
+                font-size: 72px;
+            }
         }
 
         .gradient-text {
@@ -273,13 +280,13 @@
             border-radius: 12px;
         }
 
-        .meta-card strong {
-            color: #fff;
-            font-size: 12px;
-            font-weight: 500;
-            text-transform: none;
-            letter-spacing: normal;
-        }
+            .meta-card strong {
+                color: #fff;
+                font-size: 12px;
+                font-weight: 500;
+                text-transform: none;
+                letter-spacing: normal;
+            }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600&family=JetBrains+Mono:wght@300;500&display=swap" rel="stylesheet">
 </head>
@@ -306,7 +313,7 @@
                 <header>
                     <h2 class="mono" style="font-size:12px; letter-spacing:0.3em; text-transform:uppercase; color:var(--indigo-400); margin-bottom: 8px;">Systems Engineering Student</h2>
                     <h1>José Luis <span class="gradient-text">Monteza</span></h1>
-                    
+
                     <p style="color: var(--zinc-400); font-weight: 300; font-size: 15px; max-w: 448px; line-height: 1.6; margin-top: 16px; margin-bottom: 20px;">
                         Estudiante de 6.° ciclo enfocado en arquitectura de software <span style="color: var(--cyan-400); font-weight: 500;">Data-Oriented Design (ECS)</span> y simulación gráfica. Especializado en computación de alto rendimiento y optimización de memoria.
                     </p>
@@ -362,11 +369,11 @@
                         <div style="position:relative; z-index:10; text-align:center; width: 100%; padding: 24px;">
                             <div class="mono" style="font-size:11px; letter-spacing:0.2em; color:var(--zinc-500); margin-bottom:12px;">READY FOR INITIALIZATION</div>
                             <h3 style="font-size:24px; font-weight:500; margin-bottom:20px;">Custom 2D Engine</h3>
-                            
+
                             <a href="https://joseluismontezamilian12-rgb.github.io/ecs-dashboard/" target="_blank" rel="noopener noreferrer" style="text-decoration: none; display: inline-block;">
                                 <button class="run-btn mono" style="margin-bottom: 24px;">Ejecutar Simulación ⚡</button>
                             </a>
-                            
+
                             <div class="mono" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; font-size: 11px; color: var(--zinc-400); text-align: left; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px; max-w: 340px; margin: 0 auto;">
                                 <div><span style="color:var(--emerald-400);">●</span> SYS_FPS: <strong style="color:#fff;">144 Hz</strong></div>
                                 <div>THREADS: <strong style="color:var(--cyan-400);">8 Pool Active</strong></div>
@@ -381,11 +388,11 @@
         </div>
 
         <div class="bento-grid-header" style="margin-top: 32px;">
-            
+
             <div class="glass-box" style="grid-column: span 5; padding: 24px;">
                 <h2 class="mono" style="font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--indigo-400); margin-bottom: 16px;">// Core Technologies</h2>
                 <h3 style="font-size: 18px; font-weight: 500; margin-bottom: 20px;">Infraestructura de Software</h3>
-                
+
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                     <div>
                         <h4 class="mono" style="font-size: 11px; color: var(--zinc-500); margin-bottom: 12px; text-transform: uppercase;">Lenguajes</h4>
@@ -411,9 +418,9 @@
             <div class="glass-box" style="grid-column: span 7; padding: 24px;">
                 <h2 class="mono" style="font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cyan-400); margin-bottom: 16px;">// System Logs & Evolution</h2>
                 <h3 style="font-size: 18px; font-weight: 500; margin-bottom: 20px;">Línea de Tiempo de Desarrollo</h3>
-                
+
                 <div style="position: relative; border-left: 1px solid var(--zinc-800); padding-left: 20px; margin-left: 8px;">
-                    
+
                     <div style="position: relative; margin-bottom: 24px;">
                         <span style="position: absolute; left: -25px; top: 4px; width: 9px; height: 9px; border-radius: 50%; background: var(--cyan-400); box-shadow: 0 0 10px var(--cyan-500);"></span>
                         <div class="mono" style="font-size: 11px; color: var(--cyan-400); font-weight: bold;">2026 — Actualidad</div>
@@ -441,65 +448,12 @@
         </div>
 
         <div class="bento-grid-header" style="margin-top: 32px;">
-            
-            <div class="glass-box" style="grid-column: span 7; padding: 24px;">
-                <h2 class="mono" style="font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cyan-400); margin-bottom: 8px;">// Concurrency & Parallelism</h2>
-                <h3 style="font-size: 20px; font-weight: 500; margin-bottom: 12px; color: var(--zinc-100);">Multithread Task Scheduler</h3>
-                <div style="color: var(--zinc-400); font-size: 13px; font-weight: 300; line-height: 1.6; margin-bottom: 20px;">
-                    Programador y asignador de tareas simultáneas de alta prioridad estructurado en C# y .NET Core. Diseñado para optimizar la carga en los núcleos físicos del procesador, reduciendo los costosos intercambios de contexto mediante colas seguras no bloqueantes de tipo FIFO.
-                </div>
-
-                <div class="mono" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; font-size: 11px; color: var(--zinc-500); border-top: 1px solid rgba(255,255,255,0.05); padding-top: 16px;">
-                    <div>🧵 Core Pool: <strong style="color: var(--zinc-100);">8 Workers Active</strong></div>
-                    <div>⚡ Context Switches: <strong style="color: var(--cyan-400);">-18% Optimal</strong></div>
-                    <div>⏱ Queue Latency: <strong style="color: var(--emerald-400);">0.012 ms Rate</strong></div>
-                    <div>🛡 Sync State: <strong style="color: var(--indigo-400);">Lock-Free Safeties</strong></div>
-                </div>
-            </div>
-
-            <div class="glass-box" style="grid-column: span 5; padding: 24px; display: flex; flex-direction: column; justify-content: space-between;">
-                <div>
-                    <h2 class="mono" style="font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--indigo-400); margin-bottom: 4px;">// Hardware Telemetry</h2>
-                    <h3 style="font-size: 16px; font-weight: 500; margin-bottom: 16px;">CPU Load Balancing</h3>
-                </div>
-                
-                <div style="width: 100%;">
-                    <div style="margin-bottom: 12px;">
-                        <div class="mono" style="display: flex; justify-content: space-between; font-size: 10px; color: var(--zinc-400); margin-bottom: 4px;">
-                            <span>Core #01 - #04 (Render Thread)</span><strong>82%</strong>
-                        </div>
-                        <div style="width: 100%; height: 4px; background: var(--zinc-900); border-radius: 2px; overflow: hidden;">
-                            <div style="width: 82%; height: 100%; background: var(--cyan-400);"></div>
-                        </div>
-                    </div>
-                    <div style="margin-bottom: 12px;">
-                        <div class="mono" style="display: flex; justify-content: space-between; font-size: 10px; color: var(--zinc-400); margin-bottom: 4px;">
-                            <span>Core #05 - #08 (Worker Pool)</span><strong>45%</strong>
-                        </div>
-                        <div style="width: 100%; height: 4px; background: var(--zinc-900); border-radius: 2px; overflow: hidden;">
-                            <div style="width: 45%; height: 100%; background: var(--indigo-400);"></div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="mono" style="display: flex; justify-content: space-between; font-size: 10px; color: var(--zinc-400); margin-bottom: 4px;">
-                            <span>L3 Cache Localization Rate</span><strong>94% Hit</strong>
-                        </div>
-                        <div style="width: 100%; height: 4px; background: var(--zinc-900); border-radius: 2px; overflow: hidden;">
-                            <div style="width: 94%; height: 100%; background: var(--emerald-400);"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="bento-grid-header" style="margin-top: 32px;">
             <div class="glass-box" style="grid-column: span 12; padding: 24px;">
                 <h2 class="mono" style="font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--indigo-400); margin-bottom: 16px;">// Technical Logs & Research</h2>
                 <h3 style="font-size: 18px; font-weight: 500; margin-bottom: 24px;">Notas e Investigaciones de Ingeniería</h3>
-                
+
                 <div style="display: grid; grid-template-columns: 1fr; gap: 16px;">
-                    
+
                     <div class="log-card">
                         <div style="text-align: left;">
                             <span class="mono" style="font-size: 11px; color: var(--cyan-400);">[LOG_0x01]</span>
@@ -508,7 +462,7 @@
                         </div>
                         <span class="mono" style="font-size: 11px; color: var(--zinc-500); border: 1px solid var(--zinc-800); padding: 4px 10px; border-radius: 6px; background: rgba(0,0,0,0.3);">3 min read</span>
                     </div>
-                    
+
                     <div class="log-card">
                         <div style="text-align: left;">
                             <span class="mono" style="font-size: 11px; color: var(--cyan-400);">[LOG_0x02]</span>
@@ -520,7 +474,7 @@
 
                     <div class="log-card">
                         <div style="text-align: left;">
-                            <span class="mono" style="font-size: 11px; color: var(--cyan-400);">[LOG_0x03]</span>
+                            <span class="mono" style="font-size: 11px; color: var(--cyan-400);">[LOG_0x02]</span>
                             <h4 style="font-size: 15px; font-weight: 500; margin: 4px 0; color: var(--zinc-100);">Estrategias de Asignación Cero (Zero-Allocation) frente al Garbage Collector</h4>
                             <p style="color: var(--zinc-400); font-size: 12px; font-weight: 300; max-w: 850px; line-height: 1.5;">Manejo avanzado del recolector de basura de .NET mediante la priorización de tipos de valor (structs), Object Pooling y el uso eficiente de memoria no administrada.</p>
                         </div>
