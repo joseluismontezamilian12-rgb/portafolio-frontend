@@ -87,7 +87,7 @@
         nav {
             position: relative;
             z-index: 50;
-            border-b: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             background-color: rgba(0,0,0,0.6);
             backdrop-filter: blur(8px);
             padding: 16px 32px;
@@ -131,13 +131,13 @@
 
         /* DETALLES VISUALES Y BOTÓN */
         .hero-left header {
-            margin-bottom: 48px;
+            margin-bottom: 32px;
         }
 
         .engine-display {
             background-color: black;
             border-radius: 22px;
-            aspect-ratio: 16 / 9;
+            aspect-ratio: 16 / 10;
             position: relative;
             display: flex;
             align-items: center;
@@ -210,9 +210,9 @@
         .hero-left p {
             color: var(--zinc-400);
             font-weight: 300;
-            font-size: 18px;
+            font-size: 15px;
             max-w: 448px;
-            margin-bottom: 48px;
+            margin-bottom: 24px;
         }
 
         .meta-data {
@@ -250,8 +250,8 @@
 
     <nav>
         <div style="display:flex; gap:16px;">
-            <span class="mono" style="font-size:10px; tracking:0.2em; color:var(--zinc-500);">System: Online</span>
-            <span class="mono" style="font-size:10px; tracking:0.2em; color:var(--cyan-500);">Node: C#_Core_v10.0</span>
+            <span class="mono" style="font-size:10px; letter-spacing:0.2em; color:var(--zinc-500);">System: Online</span>
+            <span class="mono" style="font-size:10px; letter-spacing:0.2em; color:var(--cyan-500);">Node: C#_Core_v10.0</span>
         </div>
     </nav>
 
@@ -260,9 +260,24 @@
 
             <div class="hero-left">
                 <header>
-                    <h2 class="mono" style="font-size:12px; tracking:0.3em; text-transform:uppercase; color:var(--indigo-400);">Systems Architect</h2>
+                    <h2 class="mono" style="font-size:12px; letter-spacing:0.3em; text-transform:uppercase; color:var(--indigo-400); margin-bottom: 8px;">Systems Engineering Student</h2>
                     <h1>José Luis <span class="gradient-text">Monteza</span></h1>
-                    <p>Especializado en computación de alto rendimiento y optimización de memoria a bajo nivel.</p>
+
+                    <p style="color: var(--zinc-400); font-weight: 300; font-size: 15px; max-w: 448px; line-height: 1.6; margin-top: 16px; margin-bottom: 20px;">
+                        Estudiante de 6.° ciclo enfocado en arquitectura de software <span style="color: var(--cyan-400); font-weight: 500;">Data-Oriented Design (ECS)</span> y simulación gráfica. Especializado en computación de alto rendimiento y optimización de memoria.
+                    </p>
+
+                    <div class="mono" style="display: flex; gap: 10px; font-size: 11px; flex-wrap: wrap;">
+                        <a href="https://github.com/joseluismontezamilian12-rgb" target="_blank" rel="noopener noreferrer" style="color: var(--cyan-400); text-decoration: none; border: 1px solid rgba(34, 211, 238, 0.2); padding: 6px 14px; border-radius: 8px; background: rgba(34, 211, 238, 0.02); transition: all 0.3s;" onmouseover="this.style.borderColor='var(--cyan-400)'; this.style.background='rgba(34, 211, 238, 0.08)'" onmouseout="this.style.borderColor='rgba(34, 211, 238, 0.2)'; this.style.background='rgba(34, 211, 238, 0.02)'">
+                            [ GITHUB ]
+                        </a>
+                        <a href="#" style="color: var(--zinc-400); text-decoration: none; border: 1px solid var(--zinc-800); padding: 6px 14px; border-radius: 8px; transition: all 0.3s;" onmouseover="this.style.color='#fff'; this.style.borderColor='var(--zinc-500)'" onmouseout="this.style.color='var(--zinc-400)'; this.style.borderColor='var(--zinc-800)'">
+                            [ LINKEDIN ]
+                        </a>
+                        <a href="#" style="color: var(--zinc-400); text-decoration: none; border: 1px solid var(--zinc-800); padding: 6px 14px; border-radius: 8px; transition: all 0.3s;" onmouseover="this.style.color='#fff'; this.style.borderColor='var(--zinc-500)'" onmouseout="this.style.color='var(--zinc-400)'; this.style.borderColor='var(--zinc-800)'">
+                            [ CV_PDF ]
+                        </a>
+                    </div>
                 </header>
 
                 <div class="meta-data mono">
@@ -270,7 +285,7 @@
                         <span style="color:var(--zinc-600);">Lang</span>
                         <strong>C# / .NET 10</strong>
                     </div>
-                    <div class="glass-box meta-card" style="border-l-width:2px; border-l-color:rgba(6,182,212,0.3);">
+                    <div class="glass-box meta-card" style="border-left-width:2px; border-left-color:rgba(6,182,212,0.3);">
                         <span style="color:var(--zinc-600);">Architecture</span>
                         <strong style="color:var(--cyan-400);">Data-Oriented (ECS)</strong>
                     </div>
@@ -279,11 +294,19 @@
                 <div class="glass-box" style="margin-top: 24px; padding: 24px;">
                     <h2 class="mono" style="font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cyan-400); margin-bottom: 8px;">Featured Deployment</h2>
                     <h3 style="font-size: 22px; font-weight: 500; margin-bottom: 12px; color: var(--zinc-100);">Monitor de Núcleo ECS</h3>
-                    <div style="color: var(--zinc-400); font-size: 13px; font-weight: 300; line-height: 1.6; margin-bottom: 24px;">
-                        Simulador de benchmark interactivo en tiempo real desarrollado en React y Tailwind v4. Optimizado para el monitoreo de asignación de memoria secuencial y rendimiento de hilos.
+                    <div style="color: var(--zinc-400); font-size: 13px; font-weight: 300; line-height: 1.6; margin-bottom: 20px;">
+                        Simulador de benchmark interactivo en tiempo real optimizado para hilos paralelos y asignación de memoria contigua en entornos de alto rendimiento.
                     </div>
+
+                    <div class="mono" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; font-size: 11px; color: var(--zinc-500); margin-bottom: 20px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 16px;">
+                        <div>⚙️ Entities: <strong style="color: var(--zinc-100);">100k Alloc</strong></div>
+                        <div>⏱️ Frame Time: <strong style="color: var(--cyan-400);">1.8 ms</strong></div>
+                        <div>📉 Memory: <strong style="color: var(--emerald-400);">-35% Alloc</strong></div>
+                        <div>🌀 Performance: <strong style="color: var(--indigo-400);">60 Hz Fixed</strong></div>
+                    </div>
+
                     <a href="https://joseluismontezamilian12-rgb.github.io/ecs-dashboard/" target="_blank" rel="noopener noreferrer" style="text-decoration: none; display: block;">
-                        <button class="run-btn mono" style="width: 100%; text-align: center; padding: 14px 0;">Lanzar Demo en Vivo 🚀</button>
+                        <button class="run-btn mono" style="width: 100%; text-align: center; padding: 14px 0;">Abrir Demo Interactiva 🚀</button>
                     </a>
                 </div>
             </div>
@@ -292,10 +315,17 @@
                 <div class="glass-box" style="padding:4px; border-radius:28px;">
                     <div class="engine-display">
                         <div class="scanline"></div>
-                        <div style="position:relative; z-index:10; text-align:center;">
-                            <div class="mono" style="font-size:11px; tracking:0.2em; color:var(--zinc-500); margin-b:16px;">READY FOR INITIALIZATION</div>
-                            <h3 style="font-size:24px; font-weight:500; margin-b:24px;">Custom 2D Engine</h3>
-                            <button class="run-btn mono">Run Stress Test</button>
+                        <div style="position:relative; z-index:10; text-align:center; width: 100%; padding: 24px;">
+                            <div class="mono" style="font-size:11px; letter-spacing:0.2em; color:var(--zinc-500); margin-bottom:12px;">READY FOR INITIALIZATION</div>
+                            <h3 style="font-size:24px; font-weight:500; margin-bottom:20px;">Custom 2D Engine</h3>
+                            <button class="run-btn mono" style="margin-bottom: 24px;">Ejecutar Simulación ⚡</button>
+
+                            <div class="mono" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; font-size: 11px; color: var(--zinc-400); text-align: left; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px; max-w: 340px; margin: 0 auto;">
+                                <div><span style="color:var(--emerald-400);">●</span> SYS_FPS: <strong style="color:#fff;">144 Hz</strong></div>
+                                <div>THREADS: <strong style="color:var(--cyan-400);">8 Pool Active</strong></div>
+                                <div>ECS_ENTITIES: <strong style="color:#fff;">120,000</strong></div>
+                                <div>CACHE_HIT: <strong style="color:var(--indigo-400);">98.2% Rate</strong></div>
+                            </div>
                         </div>
                     </div>
                 </div>
