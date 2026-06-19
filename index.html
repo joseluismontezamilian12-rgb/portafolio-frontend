@@ -1,490 +1,589 @@
 ﻿<!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>José Luis Monteza | Systems Architect</title>
-    <style>
-        /* CONFIGURACIÓN Y TIPOGRAFÍA BASE */
-        :root {
-            --bg-color: #030303;
-            --zinc-100: #fafafa;
-            --zinc-300: #d4d4d8;
-            --zinc-400: #a1a1aa;
-            --zinc-500: #71717a;
-            --zinc-600: #52525b;
-            --zinc-700: #3f3f46;
-            --zinc-800: #27272a;
-            --zinc-900: #18181b;
-            --indigo-400: #818cf8;
-            --cyan-400: #22d3ee;
-            --cyan-500: #06b6d4;
-            --emerald-400: #34d399;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>José Luis Monteza | Backend & Full-Stack Developer</title>
+<style>
+:root {
+  --bg-color: #030303;
+  --zinc-100: #fafafa;
+  --zinc-300: #d4d4d8;
+  --zinc-400: #a1a1aa;
+  --zinc-500: #71717a;
+  --zinc-600: #52525b;
+  --zinc-700: #3f3f46;
+  --zinc-800: #27272a;
+  --zinc-900: #18181b;
+  --indigo-400: #818cf8;
+  --cyan-400: #22d3ee;
+  --cyan-500: #06b6d4;
+  --emerald-400: #34d399;
+  --amber-400: #fbbf24;
+}
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-        body {
-            font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--zinc-100);
-            overflow-x: hidden;
-            letter-spacing: -0.02em;
-        }
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--zinc-100);
+  overflow-x: hidden;
+  letter-spacing: -0.02em;
+}
 
-        .mono {
-            font-family: 'JetBrains Mono', monospace;
-            font-weight: 300;
-        }
+.mono { font-family: 'JetBrains Mono', monospace; font-weight: 300; }
 
-        /* EFECTOS DE FONDO CROMÁTICOS (Holográficos) */
-        .blur-light-wrapper {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 1;
-            opacity: 0.8;
-        }
+.blur-light-wrapper {
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 1; opacity: 0.8;
+}
+.blur-light {
+  position: absolute; border-radius: 9999px;
+  filter: blur(120px); opacity: 0.08;
+}
 
-        .blur-light {
-            position: absolute;
-            border-radius: 9999px;
-            filter: blur(120px);
-            opacity: 0.1;
-        }
+.grid-mesh {
+  position: fixed; inset: 0; z-index: 0;
+  background-image: linear-gradient(to right, #1a1a1a 1px, transparent 1px),
+    linear-gradient(to bottom, #1a1a1a 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(ellipse 60% 50% at 50% 0%, #000 70%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 0%, #000 70%, transparent 100%);
+}
 
-        /* REJILLA TÉCNICA */
-        .grid-mesh {
-            position: fixed;
-            inset: 0;
-            z-index: 0;
-            background-image: linear-gradient(to right, #1a1a1a 1px, transparent 1px), linear-gradient(to bottom, #1a1a1a 1px, transparent 1px);
-            background-size: 32px 32px;
-            mask-image: radial-gradient(ellipse 60% 50% at 50% 0%, #000 70%, transparent 100%);
-            -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 0%, #000 70%, transparent 100%);
-        }
+.glass-box {
+  background: rgba(255,255,255,0.02);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 20px;
+  padding: 32px;
+  transition: border-color 0.4s ease;
+}
+.glass-box:hover { border-color: rgba(255,255,255,0.1); }
 
-        /* COMPONENTES DE DISEÑO (Glassmorphism Avanzado) */
-        .glass-box {
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 32px;
-            transition: border-color 0.4s ease;
-        }
+nav {
+  position: relative; z-index: 50;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  background-color: rgba(0,0,0,0.6);
+  backdrop-filter: blur(8px);
+  padding: 16px 32px;
+  display: flex; justify-content: space-between; align-items: center;
+}
 
-            .glass-box:hover {
-                border-color: rgba(255, 255, 255, 0.1);
-            }
+main {
+  position: relative; z-index: 10;
+  max-width: 1280px; margin: 0 auto; padding: 48px 24px;
+}
 
-        /* ESTRUCTURA PRINCIPAL */
-        nav {
-            position: relative;
-            z-index: 50;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            background-color: rgba(0,0,0,0.6);
-            backdrop-filter: blur(8px);
-            padding: 16px 32px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+/* GRIDS */
+.grid-12 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+@media (min-width: 1024px) {
+  main { padding: 80px 48px; }
+  .grid-12 { grid-template-columns: repeat(12, 1fr); }
+  .col-5 { grid-column: span 5; }
+  .col-7 { grid-column: span 7; }
+  .col-4 { grid-column: span 4; }
+  .col-6 { grid-column: span 6; }
+  .col-8 { grid-column: span 8; }
+  .col-12 { grid-column: span 12; }
+}
 
-        main {
-            position: relative;
-            z-index: 10;
-            max-w: 1280px;
-            margin: 0 auto;
-            padding: 48px 24px;
-        }
+/* TYPOGRAPHY */
+h1 { font-size: 48px; font-weight: 200; letter-spacing: -0.04em; }
+@media (min-width: 768px) { h1 { font-size: 72px; } }
 
-        .bento-grid-header {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 32px;
-            align-items: flex-start;
-        }
+.gradient-text {
+  background: linear-gradient(90deg, #fff, var(--zinc-500));
+  -webkit-background-clip: text; color: transparent; font-weight: 600;
+}
 
-        @media (min-width: 1024px) {
-            main {
-                padding: 80px 48px;
-            }
+/* BUTTONS */
+.btn-social {
+  text-decoration: none; font-size: 11px;
+  padding: 6px 14px; border-radius: 8px; transition: all 0.3s ease;
+}
+.btn-social-cyan {
+  color: var(--cyan-400); border: 1px solid rgba(34,211,238,0.2);
+  background: rgba(34,211,238,0.02);
+}
+.btn-social-cyan:hover { border-color: var(--cyan-400); background: rgba(34,211,238,0.08); }
+.btn-social-zinc { color: var(--zinc-400); border: 1px solid var(--zinc-800); }
+.btn-social-zinc:hover { color: #fff; border-color: var(--zinc-500); }
 
-            .bento-grid-header {
-                grid-template-columns: repeat(12, 1fr);
-            }
+.run-btn {
+  position: relative; z-index: 10;
+  background-color: var(--zinc-100); color: black;
+  border: none; padding: 12px 32px; border-radius: 9999px;
+  font-weight: bold; cursor: pointer; text-transform: uppercase;
+  letter-spacing: 0.1em; font-size: 11px; transition: all 0.5s ease;
+  text-decoration: none; display: inline-block;
+}
+.run-btn:hover {
+  background-color: var(--cyan-400); transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(6,182,212,0.3);
+}
 
-            .hero-left {
-                grid-column: span 5;
-            }
+/* META CARDS */
+.meta-data {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 16px; font-size: 10px;
+  text-transform: uppercase; letter-spacing: 0.2em;
+}
+.meta-card { padding: 16px; border-radius: 12px; }
+.meta-card strong {
+  color: #fff; font-size: 12px; font-weight: 500;
+  text-transform: none; letter-spacing: normal;
+}
 
-            .engine-right {
-                grid-column: span 7;
-            }
-        }
+/* PROJECT CARDS */
+.project-card {
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 16px;
+  padding: 24px;
+  background: rgba(255,255,255,0.015);
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex; flex-direction: column; gap: 16px;
+}
+.project-card:hover {
+  border-color: rgba(34,211,238,0.2);
+  background: rgba(34,211,238,0.01);
+  transform: translateY(-2px);
+}
+.project-card-badge {
+  display: inline-block; font-size: 10px;
+  padding: 3px 10px; border-radius: 20px;
+  text-transform: uppercase; letter-spacing: 0.15em;
+}
+.badge-primary {
+  background: rgba(34,211,238,0.1); color: var(--cyan-400);
+  border: 1px solid rgba(34,211,238,0.2);
+}
+.badge-secondary {
+  background: rgba(129,140,248,0.1); color: var(--indigo-400);
+  border: 1px solid rgba(129,140,248,0.2);
+}
+.badge-tertiary {
+  background: rgba(52,211,153,0.1); color: var(--emerald-400);
+  border: 1px solid rgba(52,211,153,0.2);
+}
 
-        /* DETALLES VISUALES Y BOTONES */
-        .hero-left header {
-            margin-bottom: 32px;
-        }
+/* STAT GRID */
+.stat-grid {
+  display: grid; grid-template-columns: repeat(2,1fr);
+  gap: 10px; font-size: 11px; color: var(--zinc-500);
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding-top: 16px;
+}
+.stat-grid .stat-val { color: var(--zinc-100); font-weight: 500; }
+.stat-grid .stat-val-cyan { color: var(--cyan-400); font-weight: 500; }
+.stat-grid .stat-val-green { color: var(--emerald-400); font-weight: 500; }
+.stat-grid .stat-val-indigo { color: var(--indigo-400); font-weight: 500; }
 
-        .engine-display {
-            background-color: black;
-            border-radius: 22px;
-            aspect-ratio: 16 / 10;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
+/* BLOG CARDS */
+.log-card {
+  border: 1px solid var(--zinc-900); padding: 20px; border-radius: 12px;
+  background: rgba(255,255,255,0.005);
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 16px; transition: all 0.3s ease; cursor: pointer;
+}
+.log-card:hover {
+  border-color: rgba(34,211,238,0.25); background: rgba(34,211,238,0.01);
+  transform: translateX(4px);
+}
 
-        .run-btn {
-            position: relative;
-            z-index: 10;
-            background-color: var(--zinc-100);
-            color: black;
-            border: none;
-            padding: 12px 32px;
-            border-radius: 9999px;
-            font-weight: bold;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-size: 11px;
-            transition: all 0.5s ease;
-        }
+/* SCANLINE */
+.scanline {
+  width: 100%; height: 2px;
+  background: rgba(6,182,212,0.08);
+  position: absolute; left: 0; top: 0;
+  animation: scanline 4s linear infinite;
+}
+@keyframes scanline { 0% { top: -100%; } 100% { top: 100%; } }
 
-            .run-btn:hover {
-                background-color: var(--cyan-400);
-                transform: scale(1.05);
-                box-shadow: 0 0 30px rgba(6, 182, 212, 0.3);
-            }
+/* SKILL PILLS */
+.skill-list {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px;
+}
+.skill-pill {
+  font-size: 11px; padding: 4px 12px; border-radius: 20px;
+  border: 1px solid var(--zinc-800); color: var(--zinc-300);
+  background: rgba(255,255,255,0.02);
+}
 
-        /* CLASES CSS PARA ENLACES SOCIALES */
-        .btn-social {
-            text-decoration: none;
-            font-size: 11px;
-            padding: 6px 14px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
+/* DIVIDER */
+.section-divider {
+  border: none; border-top: 1px solid rgba(255,255,255,0.05);
+  margin: 48px 0;
+}
 
-        .btn-social-cyan {
-            color: var(--cyan-400);
-            border: 1px solid rgba(34, 211, 238, 0.2);
-            background: rgba(34, 211, 238, 0.02);
-        }
-
-            .btn-social-cyan:hover {
-                border-color: var(--cyan-400);
-                background: rgba(34, 211, 238, 0.08);
-            }
-
-        .btn-social-zinc {
-            color: var(--zinc-400);
-            border: 1px solid var(--zinc-800);
-        }
-
-            .btn-social-zinc:hover {
-                color: #fff;
-                border-color: var(--zinc-500);
-            }
-
-        /* HOVER SEGURO PARA EL BLOG */
-        .log-card {
-            border: 1px solid var(--zinc-900);
-            padding: 20px;
-            border-radius: 12px;
-            background: rgba(255,255,255,0.005);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 16px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-            .log-card:hover {
-                border-color: rgba(34, 211, 238, 0.25);
-                background: rgba(34, 211, 238, 0.01);
-                transform: translateX(4px);
-            }
-
-        .scanline {
-            width: 100%;
-            height: 2px;
-            background: rgba(6, 182, 212, 0.08);
-            position: absolute;
-            left: 0;
-            top: 0;
-            animation: scanline 4s linear infinite;
-        }
-
-        @keyframes scanline {
-            0% {
-                top: -100%;
-            }
-
-            100% {
-                top: 100%;
-            }
-        }
-
-        /* Estilos menores de texto */
-        h1 {
-            font-size: 48px;
-            font-weight: 200;
-            letter-spacing: -0.04em;
-        }
-
-        @media (min-width: 768px) {
-            h1 {
-                font-size: 72px;
-            }
-        }
-
-        .gradient-text {
-            background: linear-gradient(90deg, #fff, var(--zinc-500));
-            -webkit-background-clip: text;
-            color: transparent;
-            font-weight: 600;
-        }
-
-        .hero-left p {
-            color: var(--zinc-400);
-            font-weight: 300;
-            font-size: 15px;
-            max-w: 448px;
-            margin-bottom: 24px;
-        }
-
-        .meta-data {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-        }
-
-        .meta-card {
-            padding: 16px;
-            border-radius: 12px;
-        }
-
-            .meta-card strong {
-                color: #fff;
-                font-size: 12px;
-                font-weight: 500;
-                text-transform: none;
-                letter-spacing: normal;
-            }
-    </style>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600&family=JetBrains+Mono:wght@300;500&display=swap" rel="stylesheet">
+/* SECTION LABEL */
+.section-label {
+  font-size: 10px; letter-spacing: 0.25em;
+  text-transform: uppercase; color: var(--zinc-600);
+  margin-bottom: 32px; display: flex; align-items: center; gap: 12px;
+}
+.section-label::after {
+  content: ''; flex: 1;
+  height: 1px; background: rgba(255,255,255,0.05);
+}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600&family=JetBrains+Mono:wght@300;500&display=swap" rel="stylesheet">
 </head>
-<body class="overflow-x-hidden">
+<body>
 
-    <div class="grid-mesh"></div>
+<div class="grid-mesh"></div>
+<div class="blur-light-wrapper">
+  <div class="blur-light" style="width:55vw;height:55vw;background:#4f46e5;top:-15%;left:-10%;"></div>
+  <div class="blur-light" style="width:45vw;height:45vw;background:#06b6d4;bottom:-10%;right:-5%;"></div>
+</div>
 
-    <div class="blur-light-wrapper">
-        <div class="blur-light" style="width: 60vw; height: 60vw; background: var(--indigo-600); top: -10%; left: -10%;"></div>
-        <div class="blur-light" style="width: 50vw; height: 50vw; background: var(--cyan-600); bottom: -10%; right: -10%;"></div>
+<!-- NAV -->
+<nav>
+  <div style="display:flex;gap:16px;">
+    <span class="mono" style="font-size:10px;letter-spacing:0.2em;color:var(--zinc-500);">System: Online</span>
+    <span class="mono" style="font-size:10px;letter-spacing:0.2em;color:var(--cyan-500);">Stack: .NET · React · SQL</span>
+  </div>
+  <div class="mono" style="font-size:10px;letter-spacing:0.15em;color:var(--zinc-600);">jlmonteza.dev</div>
+</nav>
+
+<main>
+
+  <!-- ═══════════════════════════════════ HERO ═══════════════════════════════════ -->
+  <div class="grid-12" style="align-items:flex-start;">
+
+    <!-- LEFT: name + bio -->
+    <div class="col-5">
+      <header style="margin-bottom:32px;">
+        <h2 class="mono" style="font-size:12px;letter-spacing:0.3em;text-transform:uppercase;color:var(--indigo-400);margin-bottom:8px;">
+          Backend &amp; Full-Stack Developer
+        </h2>
+        <h1>José Luis <span class="gradient-text">Monteza</span></h1>
+        <p style="color:var(--zinc-400);font-weight:300;font-size:15px;line-height:1.7;margin-top:16px;margin-bottom:20px;max-width:420px;">
+          Estudiante de Ing. de Sistemas (6.° ciclo, UPN) especializado en
+          <span style="color:var(--cyan-400);font-weight:500;">.NET + React</span>.
+          Construyo sistemas transaccionales con Clean Architecture, JWT, pruebas unitarias
+          y persistencia políglota. 3+ años liderando operaciones en retail
+          con SAP y Kronos — entiendo el negocio detrás del código.
+        </p>
+        <div class="mono" style="display:flex;gap:10px;font-size:11px;flex-wrap:wrap;">
+          <a href="https://github.com/joseluismontezamilian12-rgb" target="_blank" rel="noopener" class="btn-social btn-social-cyan">[ GITHUB ]</a>
+          <a href="https://www.linkedin.com/in/jos%C3%A9-luis-monteza-milian-8b5835328" target="_blank" rel="noopener" class="btn-social btn-social-zinc">[ LINKEDIN ]</a>
+          <a href="https://drive.google.com/file/d/1AsH-uh4o7OfPOpdvcxT-y8UaGBwezx2F/view?usp=drivesdk" target="_blank" rel="noopener" class="btn-social btn-social-zinc">[ CV_PDF ]</a>
+        </div>
+      </header>
+
+      <div class="meta-data mono">
+        <div class="glass-box meta-card">
+          <span style="color:var(--zinc-600);">Backend</span><br>
+          <strong>ASP.NET Core · EF Core</strong>
+        </div>
+        <div class="glass-box meta-card" style="border-left:2px solid rgba(6,182,212,0.3);">
+          <span style="color:var(--zinc-600);">Patterns</span><br>
+          <strong style="color:var(--cyan-400);">Clean Arch · JWT · Tests</strong>
+        </div>
+      </div>
     </div>
 
-    <nav>
-        <div style="display:flex; gap:16px;">
-            <span class="mono" style="font-size:10px; letter-spacing:0.2em; color:var(--zinc-500);">System: Online</span>
-            <span class="mono" style="font-size:10px; letter-spacing:0.2em; color:var(--cyan-500);">Node: C#_Core_v10.0</span>
-        </div>
-    </nav>
-
-    <main>
-        <div class="bento-grid-header">
-
-            <div class="hero-left">
-                <header>
-                    <h2 class="mono" style="font-size:12px; letter-spacing:0.3em; text-transform:uppercase; color:var(--indigo-400); margin-bottom: 8px;">Systems Engineering Student</h2>
-                    <h1>José Luis <span class="gradient-text">Monteza</span></h1>
-
-                    <p style="color: var(--zinc-400); font-weight: 300; font-size: 15px; max-w: 448px; line-height: 1.6; margin-top: 16px; margin-bottom: 20px;">
-                        Estudiante de 6.° ciclo enfocado en arquitectura de software <span style="color: var(--cyan-400); font-weight: 500;">Data-Oriented Design (ECS)</span> y simulación gráfica. Especializado en computación de alto rendimiento y optimización de memoria.
-                    </p>
-
-                    <div class="mono" style="display: flex; gap: 10px; font-size: 11px; flex-wrap: wrap;">
-                        <a href="https://github.com/joseluismontezamilian12-rgb" target="_blank" rel="noopener noreferrer" class="btn-social btn-social-cyan">
-                            [ GITHUB ]
-                        </a>
-                        <a href="https://www.linkedin.com/in/jos%C3%A9-luis-monteza-milian-8b5835328" target="_blank" rel="noopener noreferrer" class="btn-social btn-social-zinc">
-                            [ LINKEDIN ]
-                        </a>
-                        <a href="https://drive.google.com/file/d/1AsH-uh4o7OfPOpdvcxT-y8UaGBwezx2F/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="btn-social btn-social-zinc">
-                            [ CV_PDF ]
-                        </a>
-                    </div>
-                </header>
-
-                <div class="meta-data mono">
-                    <div class="glass-box meta-card">
-                        <span style="color:var(--zinc-600);">Lang</span>
-                        <strong>C# / .NET 10</strong>
-                    </div>
-                    <div class="glass-box meta-card" style="border-left-width:2px; border-left-color:rgba(6,182,212,0.3);">
-                        <span style="color:var(--zinc-600);">Architecture</span>
-                        <strong style="color:var(--cyan-400);">Data-Oriented (ECS)</strong>
-                    </div>
-                </div>
-
-                <div class="glass-box" style="margin-top: 24px; padding: 24px;">
-                    <h2 class="mono" style="font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cyan-400); margin-bottom: 8px;">Featured Deployment</h2>
-                    <h3 style="font-size: 22px; font-weight: 500; margin-bottom: 12px; color: var(--zinc-100);">Monitor de Núcleo ECS</h3>
-                    <div style="color: var(--zinc-400); font-size: 13px; font-weight: 300; line-height: 1.6; margin-bottom: 20px;">
-                        Simulador de benchmark interactivo en tiempo real optimizado para hilos paralelos y asignación de memoria contigua en entornos de alto rendimiento.
-                    </div>
-
-                    <div class="mono" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; font-size: 11px; color: var(--zinc-500); margin-bottom: 20px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 16px;">
-                        <div>Entities: <strong style="color: var(--zinc-100);">100k Alloc</strong></div>
-                        <div>Frame Time: <strong style="color: var(--cyan-400);">1.8 ms</strong></div>
-                        <div>Memory: <strong style="color: var(--emerald-400);">-35% Alloc</strong></div>
-                        <div>Performance: <strong style="color: var(--indigo-400);">60 Hz Fixed</strong></div>
-                    </div>
-
-                    <a href="https://joseluismontezamilian12-rgb.github.io/ecs-dashboard/" target="_blank" rel="noopener noreferrer" style="text-decoration: none; display: block;">
-                        <button class="run-btn mono" style="width: 100%; text-align: center; padding: 14px 0;">Abrir Demo Interactiva 🚀</button>
-                    </a>
-                </div>
-            </div>
-
-            <div class="engine-right">
-                <div class="glass-box" style="padding:4px; border-radius:28px;">
-                    <div class="engine-display">
-                        <div class="scanline"></div>
-                        <div style="position:relative; z-index:10; text-align:center; width: 100%; padding: 24px;">
-                            <div class="mono" style="font-size:11px; letter-spacing:0.2em; color:var(--zinc-500); margin-bottom:12px;">READY FOR INITIALIZATION</div>
-                            <h3 style="font-size:24px; font-weight:500; margin-bottom:20px;">Custom 2D Engine</h3>
-
-                            <a href="https://joseluismontezamilian12-rgb.github.io/ecs-dashboard/" target="_blank" rel="noopener noreferrer" style="text-decoration: none; display: inline-block;">
-                                <button class="run-btn mono" style="margin-bottom: 24px;">Ejecutar Simulación ⚡</button>
-                            </a>
-
-                            <div class="mono" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; font-size: 11px; color: var(--zinc-400); text-align: left; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px; max-w: 340px; margin: 0 auto;">
-                                <div><span style="color:var(--emerald-400);">●</span> SYS_FPS: <strong style="color:#fff;">144 Hz</strong></div>
-                                <div>THREADS: <strong style="color:var(--cyan-400);">8 Pool Active</strong></div>
-                                <div>ECS_ENTITIES: <strong style="color:#fff;">120,000</strong></div>
-                                <div>CACHE_HIT: <strong style="color:var(--indigo-400);">98.2% Rate</strong></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+    <!-- RIGHT: SupplyChainCore featured -->
+    <div class="col-7">
+      <div class="glass-box" style="padding:28px;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;flex-wrap:wrap;gap:12px;">
+          <div>
+            <h2 class="mono" style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--cyan-400);margin-bottom:6px;">
+              // Proyecto Principal
+            </h2>
+            <h3 style="font-size:24px;font-weight:500;color:var(--zinc-100);">SupplyChainCore</h3>
+            <p style="color:var(--zinc-400);font-size:13px;font-weight:300;margin-top:4px;">
+              Sistema transaccional Full-Stack de gestión de inventarios bajo Clean Architecture.
+            </p>
+          </div>
+          <span class="project-card-badge badge-primary mono">Full-Stack</span>
         </div>
 
-        <div class="bento-grid-header" style="margin-top: 32px;">
-
-            <div class="glass-box" style="grid-column: span 5; padding: 24px;">
-                <h2 class="mono" style="font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--indigo-400); margin-bottom: 16px;">// Core Technologies</h2>
-                <h3 style="font-size: 18px; font-weight: 500; margin-bottom: 20px;">Infraestructura de Software</h3>
-
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                    <div>
-                        <h4 class="mono" style="font-size: 11px; color: var(--zinc-500); margin-bottom: 12px; text-transform: uppercase;">Lenguajes</h4>
-                        <ul class="mono" style="list-style: none; font-size: 12px; color: var(--zinc-300); line-height: 2;">
-                            <li><span style="color: var(--cyan-400);">[✓]</span> C# / .NET</li>
-                            <li><span style="color: var(--cyan-400);">[✓]</span> C++ / OOP</li>
-                            <li><span style="color: var(--zinc-600);">[✓]</span> Java / Core</li>
-                            <li><span style="color: var(--zinc-600);">[✓]</span> SQL / DB</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="mono" style="font-size: 11px; color: var(--zinc-500); margin-bottom: 12px; text-transform: uppercase;">Tecnologías</h4>
-                        <ul class="mono" style="list-style: none; font-size: 12px; color: var(--zinc-300); line-height: 2;">
-                            <li><span style="color: var(--indigo-400);">[✓]</span> Architecture ECS</li>
-                            <li><span style="color: var(--indigo-400);">[✓]</span> React / Vite</li>
-                            <li><span style="color: var(--zinc-600);">[✓]</span> Tailwind v4</li>
-                            <li><span style="color: var(--zinc-600);">[✓]</span> Git / GitFlow</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="glass-box" style="grid-column: span 7; padding: 24px;">
-                <h2 class="mono" style="font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cyan-400); margin-bottom: 16px;">// System Logs & Evolution</h2>
-                <h3 style="font-size: 18px; font-weight: 500; margin-bottom: 20px;">Línea de Tiempo de Desarrollo</h3>
-
-                <div style="position: relative; border-left: 1px solid var(--zinc-800); padding-left: 20px; margin-left: 8px;">
-
-                    <div style="position: relative; margin-bottom: 24px;">
-                        <span style="position: absolute; left: -25px; top: 4px; width: 9px; height: 9px; border-radius: 50%; background: var(--cyan-400); box-shadow: 0 0 10px var(--cyan-500);"></span>
-                        <div class="mono" style="font-size: 11px; color: var(--cyan-400); font-weight: bold;">2026 — Actualidad</div>
-                        <h4 style="font-size: 14px; font-weight: 500; color: var(--zinc-100); margin: 4px 0;">Desarrollo de Motores Custom 2D y Dashboards Interactivos</h4>
-                        <p style="color: var(--zinc-400); font-size: 12px; font-weight: 300; line-height: 1.5;">Simulación gráfica de partículas a 60 Hz optimizada en React Canvas y pruebas de profiling de memoria contigua en entornos C#.</p>
-                    </div>
-
-                    <div style="position: relative; margin-bottom: 24px;">
-                        <span style="position: absolute; left: -25px; top: 4px; width: 9px; height: 9px; border-radius: 50%; background: var(--zinc-700);"></span>
-                        <div class="mono" style="font-size: 11px; color: var(--zinc-500);">2025</div>
-                        <h4 style="font-size: 14px; font-weight: 500; color: var(--zinc-300); margin: 4px 0;">Diseño de Benchmarks de Memoria y Algoritmia Eficiente</h4>
-                        <p style="color: var(--zinc-500); font-size: 12px; font-weight: 300; line-height: 1.5;">Implementación de pruebas estresantes para recolectores de basura y optimización de arreglos multidimensionales para reducir latencia.</p>
-                    </div>
-
-                    <div style="position: relative;">
-                        <span style="position: absolute; left: -25px; top: 4px; width: 9px; height: 9px; border-radius: 50%; background: var(--zinc-800);"></span>
-                        <div class="mono" style="font-size: 11px; color: var(--zinc-600);">2024</div>
-                        <h4 style="font-size: 14px; font-weight: 500; color: var(--zinc-400); margin: 4px 0;">Primer Prototipo de Arquitectura Data-Oriented (ECS)</h4>
-                        <p style="color: var(--zinc-600); font-size: 12px; font-weight: 300; line-height: 1.5;">Investigación e integración de desacoplamiento de datos y diseño lógico enfocado en la orientación a componentes en C#.</p>
-                    </div>
-
-                </div>
-            </div>
-
+        <div class="stat-grid mono" style="margin-bottom:20px;">
+          <div>Arquitectura: <span class="stat-val-cyan">Clean Arch.</span></div>
+          <div>Seguridad: <span class="stat-val-green">JWT + RBAC</span></div>
+          <div>Testing: <span class="stat-val-indigo">xUnit + Moq</span></div>
+          <div>Base de datos: <span class="stat-val">SQL Server</span></div>
         </div>
 
-        <div class="bento-grid-header" style="margin-top: 32px;">
-            <div class="glass-box" style="grid-column: span 12; padding: 24px;">
-                <h2 class="mono" style="font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--indigo-400); margin-bottom: 16px;">// Technical Logs & Research</h2>
-                <h3 style="font-size: 18px; font-weight: 500; margin-bottom: 24px;">Notas e Investigaciones de Ingeniería</h3>
-
-                <div style="display: grid; grid-template-columns: 1fr; gap: 16px;">
-
-                    <div class="log-card">
-                        <div style="text-align: left;">
-                            <span class="mono" style="font-size: 11px; color: var(--cyan-400);">[LOG_0x01]</span>
-                            <h4 style="font-size: 15px; font-weight: 500; margin: 4px 0; color: var(--zinc-100);">¿Qué es Entity Component System (ECS) y por qué supera a la OOP tradicional?</h4>
-                            <p style="color: var(--zinc-400); font-size: 12px; font-weight: 300; max-w: 850px; line-height: 1.5;">Análisis del desacoplamiento total de datos y lógica para mitigar las jerarquías rígidas de la programación orientada a objetos (herencia) en simulaciones masivas.</p>
-                        </div>
-                        <span class="mono" style="font-size: 11px; color: var(--zinc-500); border: 1px solid var(--zinc-800); padding: 4px 10px; border-radius: 6px; background: rgba(0,0,0,0.3);">3 min read</span>
-                    </div>
-
-                    <div class="log-card">
-                        <div style="text-align: left;">
-                            <span class="mono" style="font-size: 11px; color: var(--cyan-400);">[LOG_0x02]</span>
-                            <h4 style="font-size: 15px; font-weight: 500; margin: 4px 0; color: var(--zinc-100);">Data-Oriented Design: Optimizando el uso de la caché L1/L2/L3 en C#</h4>
-                            <p style="color: var(--zinc-400); font-size: 12px; font-weight: 300; max-w: 850px; line-height: 1.5;">Cómo la disposición secuencial y contigua de estructuras en memoria RAM maximiza la eficiencia espacial de las líneas de caché, previniendo los costosos Cache Misses.</p>
-                        </div>
-                        <span class="mono" style="font-size: 11px; color: var(--zinc-500); border: 1px solid var(--zinc-800); padding: 4px 10px; border-radius: 6px; background: rgba(0,0,0,0.3);">5 min read</span>
-                    </div>
-
-                    <div class="log-card">
-                        <div style="text-align: left;">
-                            <span class="mono" style="font-size: 11px; color: var(--cyan-400);">[LOG_0x02]</span>
-                            <h4 style="font-size: 15px; font-weight: 500; margin: 4px 0; color: var(--zinc-100);">Estrategias de Asignación Cero (Zero-Allocation) frente al Garbage Collector</h4>
-                            <p style="color: var(--zinc-400); font-size: 12px; font-weight: 300; max-w: 850px; line-height: 1.5;">Manejo avanzado del recolector de basura de .NET mediante la priorización de tipos de valor (structs), Object Pooling y el uso eficiente de memoria no administrada.</p>
-                        </div>
-                        <span class="mono" style="font-size: 11px; color: var(--zinc-500); border: 1px solid var(--zinc-800); padding: 4px 10px; border-radius: 6px; background: rgba(0,0,0,0.3);">4 min read</span>
-                    </div>
-
-                </div>
-            </div>
+        <div style="color:var(--zinc-500);font-size:12px;font-weight:300;line-height:1.7;margin-bottom:20px;border-top:1px solid rgba(255,255,255,0.05);padding-top:16px;">
+          Ledger transaccional inmutable para control de stock con validación de negocio en capa de
+          aplicación. Aborta operaciones que generen saldo negativo antes de persistir.
+          Backend desacoplado en 5 capas + frontend React consumiendo la Web API.
         </div>
 
-    </main>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="https://github.com/joseluismontezamilian12-rgb/SupplyChainCore-FullStack" target="_blank" rel="noopener">
+            <button class="run-btn mono" style="padding:10px 24px;">Ver Repositorio →</button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ════════════════════════════════ PROYECTOS ════════════════════════════════ -->
+  <div class="section-label mono">// Proyectos de Ingeniería</div>
+
+  <div class="grid-12" style="align-items:stretch;">
+
+    <!-- SupplyChainCore (full) -->
+    <div class="col-4">
+      <div class="project-card">
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+            <span class="project-card-badge badge-primary mono">Full-Stack · Principal</span>
+          </div>
+          <h3 style="font-size:18px;font-weight:500;margin-bottom:8px;">SupplyChainCore</h3>
+          <p style="color:var(--zinc-400);font-size:13px;font-weight:300;line-height:1.6;">
+            Sistema ERP de inventarios con Clean Architecture, autenticación JWT + RBAC
+            y pruebas unitarias con xUnit y Moq.
+          </p>
+        </div>
+        <div class="skill-list mono">
+          <span class="skill-pill">C# / .NET 9</span>
+          <span class="skill-pill">ASP.NET Web API</span>
+          <span class="skill-pill">SQL Server</span>
+          <span class="skill-pill">EF Core</span>
+          <span class="skill-pill">React / Vite</span>
+          <span class="skill-pill">xUnit · Moq</span>
+        </div>
+        <div class="stat-grid mono" style="margin-top:auto;">
+          <div>Capas: <span class="stat-val">5 desacopladas</span></div>
+          <div>Auth: <span class="stat-val-cyan">JWT + RBAC</span></div>
+          <div>Tests: <span class="stat-val-green">Unit + Mock</span></div>
+          <div>Patrón: <span class="stat-val-indigo">Repository</span></div>
+        </div>
+        <a href="https://github.com/joseluismontezamilian12-rgb/SupplyChainCore-FullStack" target="_blank" rel="noopener" style="text-decoration:none;">
+          <button class="run-btn mono" style="width:100%;text-align:center;padding:12px 0;">Código fuente →</button>
+        </a>
+      </div>
+    </div>
+
+    <!-- ECommerceEcosystem -->
+    <div class="col-4">
+      <div class="project-card">
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+            <span class="project-card-badge badge-secondary mono">Backend · Microservicios</span>
+          </div>
+          <h3 style="font-size:18px;font-weight:500;margin-bottom:8px;">ECommerceEcosystem</h3>
+          <p style="color:var(--zinc-400);font-size:13px;font-weight:300;line-height:1.6;">
+            Ecosistema de microservicios con Catalog.API (SQL Server) y Basket.API (Redis).
+            Comunicación síncrona HTTP entre servicios con validación de precios en tiempo real.
+          </p>
+        </div>
+        <div class="skill-list mono">
+          <span class="skill-pill">C# / .NET</span>
+          <span class="skill-pill">Minimal APIs</span>
+          <span class="skill-pill">SQL Server</span>
+          <span class="skill-pill">Redis</span>
+          <span class="skill-pill">EF Core</span>
+          <span class="skill-pill">Swagger</span>
+        </div>
+        <div class="stat-grid mono" style="margin-top:auto;">
+          <div>Servicios: <span class="stat-val">2 autónomos</span></div>
+          <div>Cache: <span class="stat-val-cyan">Redis NoSQL</span></div>
+          <div>Comm.: <span class="stat-val-green">HTTP sync</span></div>
+          <div>Docs: <span class="stat-val-indigo">Swagger UI</span></div>
+        </div>
+        <a href="https://github.com/joseluismontezamilian12-rgb/ECommerceEcosystem" target="_blank" rel="noopener" style="text-decoration:none;">
+          <button class="run-btn mono" style="width:100%;text-align:center;padding:12px 0;">Código fuente →</button>
+        </a>
+      </div>
+    </div>
+
+    <!-- ECS Dashboard -->
+    <div class="col-4">
+      <div class="project-card">
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+            <span class="project-card-badge badge-tertiary mono">Frontend · SPA</span>
+          </div>
+          <h3 style="font-size:18px;font-weight:500;margin-bottom:8px;">Enterprise Dashboard</h3>
+          <p style="color:var(--zinc-400);font-size:13px;font-weight:300;line-height:1.6;">
+            SPA de visualización de KPIs y métricas operativas en tiempo real.
+            Optimizada con debouncing, paginación server-side y control de renderizado.
+          </p>
+        </div>
+        <div class="skill-list mono">
+          <span class="skill-pill">React 19</span>
+          <span class="skill-pill">Vite</span>
+          <span class="skill-pill">Tailwind CSS</span>
+          <span class="skill-pill">Recharts</span>
+          <span class="skill-pill">Context API</span>
+          <span class="skill-pill">TypeScript</span>
+        </div>
+        <div class="stat-grid mono" style="margin-top:auto;">
+          <div>Render: <span class="stat-val">Optimizado</span></div>
+          <div>Build: <span class="stat-val-cyan">Vite HMR</span></div>
+          <div>Charts: <span class="stat-val-green">Recharts</span></div>
+          <div>Deploy: <span class="stat-val-indigo">GitHub Pages</span></div>
+        </div>
+        <div style="display:flex;gap:10px;">
+          <a href="https://joseluismontezamilian12-rgb.github.io/ecs-dashboard/" target="_blank" rel="noopener" style="text-decoration:none;flex:1;">
+            <button class="run-btn mono" style="width:100%;text-align:center;padding:12px 0;">Demo en vivo 🚀</button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ═══════════════════════════════ STACK + TIMELINE ═══════════════════════════════ -->
+  <div class="grid-12">
+
+    <!-- Stack tecnológico -->
+    <div class="col-5">
+      <div class="glass-box" style="padding:24px;">
+        <h2 class="mono" style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--indigo-400);margin-bottom:16px;">// Stack Tecnológico</h2>
+        <h3 style="font-size:18px;font-weight:500;margin-bottom:20px;">Infraestructura de Software</h3>
+
+        <div style="display:flex;flex-direction:column;gap:18px;">
+          <div>
+            <h4 class="mono" style="font-size:11px;color:var(--zinc-500);margin-bottom:8px;text-transform:uppercase;">Backend</h4>
+            <div class="skill-list">
+              <span class="skill-pill" style="color:var(--cyan-400);border-color:rgba(34,211,238,0.3);">C# / .NET</span>
+              <span class="skill-pill" style="color:var(--cyan-400);border-color:rgba(34,211,238,0.3);">ASP.NET Core</span>
+              <span class="skill-pill">EF Core</span>
+              <span class="skill-pill">JWT · RBAC</span>
+              <span class="skill-pill">Minimal APIs</span>
+            </div>
+          </div>
+          <div>
+            <h4 class="mono" style="font-size:11px;color:var(--zinc-500);margin-bottom:8px;text-transform:uppercase;">Frontend</h4>
+            <div class="skill-list">
+              <span class="skill-pill" style="color:var(--indigo-400);border-color:rgba(129,140,248,0.3);">React 19</span>
+              <span class="skill-pill" style="color:var(--indigo-400);border-color:rgba(129,140,248,0.3);">TypeScript</span>
+              <span class="skill-pill">Vite</span>
+              <span class="skill-pill">Tailwind CSS</span>
+              <span class="skill-pill">Recharts</span>
+            </div>
+          </div>
+          <div>
+            <h4 class="mono" style="font-size:11px;color:var(--zinc-500);margin-bottom:8px;text-transform:uppercase;">Datos</h4>
+            <div class="skill-list">
+              <span class="skill-pill" style="color:var(--emerald-400);border-color:rgba(52,211,153,0.3);">SQL Server</span>
+              <span class="skill-pill" style="color:var(--emerald-400);border-color:rgba(52,211,153,0.3);">Redis</span>
+              <span class="skill-pill">PostgreSQL</span>
+              <span class="skill-pill">EF Migrations</span>
+            </div>
+          </div>
+          <div>
+            <h4 class="mono" style="font-size:11px;color:var(--zinc-500);margin-bottom:8px;text-transform:uppercase;">Testing &amp; Herramientas</h4>
+            <div class="skill-list">
+              <span class="skill-pill">xUnit · Moq</span>
+              <span class="skill-pill">Swagger</span>
+              <span class="skill-pill">Git · GitFlow</span>
+              <span class="skill-pill">Metodologías Ágiles</span>
+            </div>
+          </div>
+          <div>
+            <h4 class="mono" style="font-size:11px;color:var(--zinc-500);margin-bottom:8px;text-transform:uppercase;">ERP Empresarial</h4>
+            <div class="skill-list">
+              <span class="skill-pill" style="color:var(--amber-400);border-color:rgba(251,191,36,0.3);">SAP · Logística</span>
+              <span class="skill-pill" style="color:var(--amber-400);border-color:rgba(251,191,36,0.3);">Kronos · RRHH</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="col-7">
+      <div class="glass-box" style="padding:24px;">
+        <h2 class="mono" style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--cyan-400);margin-bottom:16px;">// Línea de Tiempo</h2>
+        <h3 style="font-size:18px;font-weight:500;margin-bottom:24px;">Evolución como Desarrollador</h3>
+
+        <div style="position:relative;border-left:1px solid var(--zinc-800);padding-left:24px;margin-left:8px;">
+
+          <div style="position:relative;margin-bottom:28px;">
+            <span style="position:absolute;left:-29px;top:4px;width:9px;height:9px;border-radius:50%;background:var(--cyan-400);box-shadow:0 0 10px var(--cyan-500);"></span>
+            <div class="mono" style="font-size:11px;color:var(--cyan-400);font-weight:bold;">2026 — Actualidad</div>
+            <h4 style="font-size:14px;font-weight:500;color:var(--zinc-100);margin:4px 0;">SupplyChainCore + ECommerceEcosystem</h4>
+            <p style="color:var(--zinc-400);font-size:12px;font-weight:300;line-height:1.6;">
+              Implementación de Clean Architecture en un sistema Full-Stack transaccional con JWT, RBAC y unit tests.
+              Diseño de ecosistema de microservicios con persistencia políglota (SQL Server + Redis).
+            </p>
+          </div>
+
+          <div style="position:relative;margin-bottom:28px;">
+            <span style="position:absolute;left:-29px;top:4px;width:9px;height:9px;border-radius:50%;background:var(--zinc-700);"></span>
+            <div class="mono" style="font-size:11px;color:var(--zinc-500);">2025</div>
+            <h4 style="font-size:14px;font-weight:500;color:var(--zinc-300);margin:4px 0;">Enterprise Analytics Dashboard + Backend APIs</h4>
+            <p style="color:var(--zinc-500);font-size:12px;font-weight:300;line-height:1.6;">
+              Desarrollo de SPA con React y Vite para visualización de KPIs en tiempo real.
+              Primeras implementaciones de APIs RESTful y exploración de patrones de diseño en .NET.
+            </p>
+          </div>
+
+          <div style="position:relative;">
+            <span style="position:absolute;left:-29px;top:4px;width:9px;height:9px;border-radius:50%;background:var(--zinc-800);"></span>
+            <div class="mono" style="font-size:11px;color:var(--zinc-600);">2024</div>
+            <h4 style="font-size:14px;font-weight:500;color:var(--zinc-400);margin:4px 0;">Fundamentos: Bases de Datos, Algoritmos y Web</h4>
+            <p style="color:var(--zinc-600);font-size:12px;font-weight:300;line-height:1.6;">
+              Primeros proyectos en C#, modelado relacional con SQL Server y programación web.
+              Inicio en estructuras de datos y lógica algorítmica avanzada.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ════════════════════════════ ENGINEERING NOTES ════════════════════════════ -->
+  <div class="glass-box" style="padding:24px;">
+    <h2 class="mono" style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--indigo-400);margin-bottom:16px;">// Technical Logs &amp; Research</h2>
+    <h3 style="font-size:18px;font-weight:500;margin-bottom:24px;">Notas de Ingeniería</h3>
+
+    <div style="display:flex;flex-direction:column;gap:16px;">
+      <div class="log-card">
+        <div>
+          <span class="mono" style="font-size:11px;color:var(--cyan-400);">[LOG_0x01]</span>
+          <h4 style="font-size:15px;font-weight:500;margin:4px 0;color:var(--zinc-100);">Clean Architecture en .NET: Por qué separar dominio, aplicación e infraestructura</h4>
+          <p style="color:var(--zinc-400);font-size:12px;font-weight:300;line-height:1.5;">
+            Análisis práctico de las 5 capas de SupplyChainCore y cómo el desacoplamiento permite cambiar la base de datos sin tocar la lógica de negocio.
+          </p>
+        </div>
+        <span class="mono" style="font-size:11px;color:var(--zinc-500);border:1px solid var(--zinc-800);padding:4px 10px;border-radius:6px;background:rgba(0,0,0,0.3);white-space:nowrap;">4 min read</span>
+      </div>
+
+      <div class="log-card">
+        <div>
+          <span class="mono" style="font-size:11px;color:var(--cyan-400);">[LOG_0x02]</span>
+          <h4 style="font-size:15px;font-weight:500;margin:4px 0;color:var(--zinc-100);">¿Qué es Entity Component System (ECS) y por qué supera a la OOP tradicional?</h4>
+          <p style="color:var(--zinc-400);font-size:12px;font-weight:300;line-height:1.5;">
+            Análisis del desacoplamiento total de datos y lógica para mitigar las jerarquías rígidas de la herencia en simulaciones masivas.
+          </p>
+        </div>
+        <span class="mono" style="font-size:11px;color:var(--zinc-500);border:1px solid var(--zinc-800);padding:4px 10px;border-radius:6px;background:rgba(0,0,0,0.3);white-space:nowrap;">3 min read</span>
+      </div>
+
+      <div class="log-card">
+        <div>
+          <span class="mono" style="font-size:11px;color:var(--cyan-400);">[LOG_0x03]</span>
+          <h4 style="font-size:15px;font-weight:500;margin:4px 0;color:var(--zinc-100);">Redis vs SQL Server: Cuándo usar caché NoSQL en una arquitectura de microservicios</h4>
+          <p style="color:var(--zinc-400);font-size:12px;font-weight:300;line-height:1.5;">
+            Decisiones de persistencia políglota en ECommerceEcosystem: por qué el carrito va en Redis y el catálogo en SQL Server.
+          </p>
+        </div>
+        <span class="mono" style="font-size:11px;color:var(--zinc-500);border:1px solid var(--zinc-800);padding:4px 10px;border-radius:6px;background:rgba(0,0,0,0.3);white-space:nowrap;">5 min read</span>
+      </div>
+    </div>
+  </div>
+
+</main>
 </body>
 </html>
