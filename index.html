@@ -1,9 +1,30 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>José Luis Monteza | Backend & Full-Stack Developer</title>
+<title>José Luis Monteza | Backend &amp; Full-Stack Developer — .NET · React</title>
+
+<meta name="description" content="Desarrollador full-stack .NET y React. API de inventarios desplegada en Azure con JWT/RBAC, Clean Architecture y 57 pruebas — probable en vivo desde el navegador.">
+<meta name="author" content="José Luis Monteza Milian">
+<meta name="theme-color" content="#030303">
+
+<!-- Open Graph: sin esto, compartir el enlace en LinkedIn o WhatsApp no muestra ninguna vista previa. -->
+<meta property="og:type" content="profile">
+<meta property="og:title" content="José Luis Monteza | Backend &amp; Full-Stack Developer">
+<meta property="og:description" content="API de inventarios en producción sobre Azure: Clean Architecture, JWT + RBAC y 57 pruebas. Pruébala en vivo desde el navegador.">
+<meta property="og:url" content="https://joseluismontezamilian12-rgb.github.io/portafolio-frontend/">
+<meta property="og:locale" content="es_PE">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://joseluismontezamilian12-rgb.github.io/portafolio-frontend/">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙️</text></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600&family=JetBrains+Mono:wght@300;500&display=swap" rel="stylesheet">
+
 <style>
 :root {
   --bg-color: #030303;
@@ -25,23 +46,35 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background-color: var(--bg-color);
   color: var(--zinc-100);
   overflow-x: hidden;
   letter-spacing: -0.02em;
+  -webkit-font-smoothing: antialiased;
 }
 
-.mono { font-family: 'JetBrains Mono', monospace; font-weight: 300; }
+.mono { font-family: 'JetBrains Mono', ui-monospace, monospace; font-weight: 300; }
 
-.blur-light-wrapper {
-  position: fixed; inset: 0;
-  pointer-events: none; z-index: 1; opacity: 0.8;
+a { color: inherit; }
+
+/* Foco visible para navegación con teclado — el diseño original lo perdía por completo. */
+:focus-visible {
+  outline: 2px solid var(--cyan-400);
+  outline-offset: 3px;
+  border-radius: 4px;
 }
-.blur-light {
-  position: absolute; border-radius: 9999px;
-  filter: blur(120px); opacity: 0.08;
+
+.skip-link {
+  position: absolute; left: -9999px; top: 0; z-index: 100;
+  background: var(--cyan-400); color: #000;
+  padding: 12px 20px; font-size: 13px; font-weight: 600;
+  border-radius: 0 0 8px 0;
 }
+.skip-link:focus { left: 0; }
+
+.blur-light-wrapper { position: fixed; inset: 0; pointer-events: none; z-index: 1; opacity: 0.8; }
+.blur-light { position: absolute; border-radius: 9999px; filter: blur(120px); opacity: 0.08; }
 
 .grid-mesh {
   position: fixed; inset: 0; z-index: 0;
@@ -68,45 +101,70 @@ nav {
   border-bottom: 1px solid rgba(255,255,255,0.05);
   background-color: rgba(0,0,0,0.6);
   backdrop-filter: blur(8px);
-  padding: 16px 32px;
+  padding: 14px 24px;
   display: flex; justify-content: space-between; align-items: center;
+  gap: 16px; flex-wrap: wrap;
 }
 
-main {
-  position: relative; z-index: 10;
-  max-width: 1280px; margin: 0 auto; padding: 48px 24px;
+/* Punto que late junto al enlace de la API desplegada. */
+.pulse-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--emerald-400);
+  box-shadow: 0 0 8px var(--emerald-400);
+  display: inline-block;
+  animation: pulse 2s ease-in-out infinite;
 }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
 
-/* GRIDS */
-.grid-12 {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
+.nav-live {
+  display: inline-flex; align-items: center; gap: 8px;
+  text-decoration: none; font-size: 10px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--emerald-400);
+  border: 1px solid rgba(52,211,153,0.25); background: rgba(52,211,153,0.04);
+  padding: 5px 12px; border-radius: 20px; transition: all 0.3s ease;
 }
+.nav-live:hover { border-color: var(--emerald-400); background: rgba(52,211,153,0.1); }
+
+.lang-toggle {
+  display: inline-flex; border: 1px solid var(--zinc-800);
+  border-radius: 20px; overflow: hidden; background: rgba(0,0,0,0.3);
+}
+.lang-toggle button {
+  background: none; border: none; cursor: pointer;
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  letter-spacing: 0.15em; color: var(--zinc-500);
+  padding: 5px 12px; transition: all 0.25s ease;
+}
+.lang-toggle button[aria-pressed="true"] { background: var(--zinc-100); color: #000; font-weight: 500; }
+.lang-toggle button:hover:not([aria-pressed="true"]) { color: var(--zinc-100); }
+
+main { position: relative; z-index: 10; max-width: 1280px; margin: 0 auto; padding: 48px 24px; }
+
+.grid-12 { display: grid; grid-template-columns: 1fr; gap: 24px; }
 @media (min-width: 1024px) {
-  main { padding: 80px 48px; }
+  main { padding: 72px 48px; }
   .grid-12 { grid-template-columns: repeat(12, 1fr); }
-  .col-5 { grid-column: span 5; }
-  .col-7 { grid-column: span 7; }
   .col-4 { grid-column: span 4; }
+  .col-5 { grid-column: span 5; }
   .col-6 { grid-column: span 6; }
+  .col-7 { grid-column: span 7; }
   .col-8 { grid-column: span 8; }
   .col-12 { grid-column: span 12; }
 }
 
-/* TYPOGRAPHY */
-h1 { font-size: 48px; font-weight: 200; letter-spacing: -0.04em; }
-@media (min-width: 768px) { h1 { font-size: 72px; } }
+h1 { font-size: 44px; font-weight: 200; letter-spacing: -0.04em; line-height: 1.05; }
+@media (min-width: 768px) { h1 { font-size: 68px; } }
 
 .gradient-text {
   background: linear-gradient(90deg, #fff, var(--zinc-500));
-  -webkit-background-clip: text; color: transparent; font-weight: 600;
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent; font-weight: 600;
 }
 
-/* BUTTONS */
 .btn-social {
   text-decoration: none; font-size: 11px;
   padding: 6px 14px; border-radius: 8px; transition: all 0.3s ease;
+  display: inline-block;
 }
 .btn-social-cyan {
   color: var(--cyan-400); border: 1px solid rgba(34,211,238,0.2);
@@ -119,62 +177,50 @@ h1 { font-size: 48px; font-weight: 200; letter-spacing: -0.04em; }
 .run-btn {
   position: relative; z-index: 10;
   background-color: var(--zinc-100); color: black;
-  border: none; padding: 12px 32px; border-radius: 9999px;
-  font-weight: bold; cursor: pointer; text-transform: uppercase;
-  letter-spacing: 0.1em; font-size: 11px; transition: all 0.5s ease;
-  text-decoration: none; display: inline-block;
+  border: none; padding: 12px 28px; border-radius: 9999px;
+  font-weight: 700; cursor: pointer; text-transform: uppercase;
+  letter-spacing: 0.1em; font-size: 11px; transition: all 0.4s ease;
+  text-decoration: none; display: inline-block; text-align: center;
 }
-.run-btn:hover {
-  background-color: var(--cyan-400); transform: scale(1.05);
-  box-shadow: 0 0 30px rgba(6,182,212,0.3);
-}
+.run-btn:hover { background-color: var(--cyan-400); transform: scale(1.04); box-shadow: 0 0 30px rgba(6,182,212,0.3); }
 
-/* META CARDS */
+.run-btn-live { background-color: var(--emerald-400); }
+.run-btn-live:hover { background-color: var(--emerald-400); box-shadow: 0 0 34px rgba(52,211,153,0.45); }
+
+.run-btn-ghost {
+  background: transparent; color: var(--zinc-300);
+  border: 1px solid var(--zinc-700); font-weight: 500;
+}
+.run-btn-ghost:hover { background: transparent; color: #fff; border-color: var(--zinc-400); box-shadow: none; }
+
 .meta-data {
   display: grid; grid-template-columns: repeat(2, 1fr);
   gap: 16px; font-size: 10px;
   text-transform: uppercase; letter-spacing: 0.2em;
 }
 .meta-card { padding: 16px; border-radius: 12px; }
-.meta-card strong {
-  color: #fff; font-size: 12px; font-weight: 500;
-  text-transform: none; letter-spacing: normal;
-}
+.meta-card strong { color: #fff; font-size: 12px; font-weight: 500; text-transform: none; letter-spacing: normal; }
 
-/* PROJECT CARDS */
 .project-card {
   border: 1px solid rgba(255,255,255,0.05);
-  border-radius: 16px;
-  padding: 24px;
+  border-radius: 16px; padding: 24px;
   background: rgba(255,255,255,0.015);
-  transition: all 0.3s ease;
-  height: 100%;
+  transition: all 0.3s ease; height: 100%;
   display: flex; flex-direction: column; gap: 16px;
 }
-.project-card:hover {
-  border-color: rgba(34,211,238,0.2);
-  background: rgba(34,211,238,0.01);
-  transform: translateY(-2px);
-}
+.project-card:hover { border-color: rgba(34,211,238,0.2); background: rgba(34,211,238,0.01); transform: translateY(-2px); }
+
 .project-card-badge {
   display: inline-block; font-size: 10px;
   padding: 3px 10px; border-radius: 20px;
   text-transform: uppercase; letter-spacing: 0.15em;
 }
-.badge-primary {
-  background: rgba(34,211,238,0.1); color: var(--cyan-400);
-  border: 1px solid rgba(34,211,238,0.2);
-}
-.badge-secondary {
-  background: rgba(129,140,248,0.1); color: var(--indigo-400);
-  border: 1px solid rgba(129,140,248,0.2);
-}
-.badge-tertiary {
-  background: rgba(52,211,153,0.1); color: var(--emerald-400);
-  border: 1px solid rgba(52,211,153,0.2);
-}
+.badge-primary { background: rgba(34,211,238,0.1); color: var(--cyan-400); border: 1px solid rgba(34,211,238,0.2); }
+.badge-secondary { background: rgba(129,140,248,0.1); color: var(--indigo-400); border: 1px solid rgba(129,140,248,0.2); }
+.badge-tertiary { background: rgba(52,211,153,0.1); color: var(--emerald-400); border: 1px solid rgba(52,211,153,0.2); }
+.badge-live { background: rgba(52,211,153,0.14); color: var(--emerald-400); border: 1px solid rgba(52,211,153,0.35); }
+.badge-work { background: rgba(251,191,36,0.1); color: var(--amber-400); border: 1px solid rgba(251,191,36,0.25); }
 
-/* STAT GRID */
 .stat-grid {
   display: grid; grid-template-columns: repeat(2,1fr);
   gap: 10px; font-size: 11px; color: var(--zinc-500);
@@ -185,93 +231,109 @@ h1 { font-size: 48px; font-weight: 200; letter-spacing: -0.04em; }
 .stat-grid .stat-val-cyan { color: var(--cyan-400); font-weight: 500; }
 .stat-grid .stat-val-green { color: var(--emerald-400); font-weight: 500; }
 .stat-grid .stat-val-indigo { color: var(--indigo-400); font-weight: 500; }
+.stat-grid .stat-val-amber { color: var(--amber-400); font-weight: 500; }
 
-/* BLOG CARDS */
-.log-card {
+/* Tarjetas de decisiones técnicas: cada una apunta al código que la implementa. */
+.decision-card {
   border: 1px solid var(--zinc-900); padding: 20px; border-radius: 12px;
   background: rgba(255,255,255,0.005);
-  display: flex; justify-content: space-between; align-items: center;
-  flex-wrap: wrap; gap: 16px; transition: all 0.3s ease; cursor: pointer;
+  display: block; text-decoration: none;
+  transition: all 0.3s ease;
 }
-.log-card:hover {
-  border-color: rgba(34,211,238,0.25); background: rgba(34,211,238,0.01);
-  transform: translateX(4px);
+.decision-card:hover { border-color: rgba(34,211,238,0.25); background: rgba(34,211,238,0.015); transform: translateX(4px); }
+.decision-card h4 { font-size: 15px; font-weight: 500; margin: 6px 0; color: var(--zinc-100); }
+.decision-card p { color: var(--zinc-400); font-size: 12.5px; font-weight: 300; line-height: 1.6; }
+.decision-card .src {
+  display: inline-block; margin-top: 10px;
+  font-family: 'JetBrains Mono', monospace; font-size: 10.5px;
+  color: var(--zinc-500); border: 1px solid var(--zinc-800);
+  padding: 3px 9px; border-radius: 6px; background: rgba(0,0,0,0.3);
 }
+.decision-card:hover .src { color: var(--cyan-400); border-color: rgba(34,211,238,0.3); }
 
-/* SCANLINE */
-.scanline {
-  width: 100%; height: 2px;
-  background: rgba(6,182,212,0.08);
-  position: absolute; left: 0; top: 0;
-  animation: scanline 4s linear infinite;
-}
-@keyframes scanline { 0% { top: -100%; } 100% { top: 100%; } }
-
-/* SKILL PILLS */
-.skill-list {
-  display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px;
-}
+.skill-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
 .skill-pill {
   font-size: 11px; padding: 4px 12px; border-radius: 20px;
   border: 1px solid var(--zinc-800); color: var(--zinc-300);
   background: rgba(255,255,255,0.02);
 }
 
-/* DIVIDER */
-.section-divider {
-  border: none; border-top: 1px solid rgba(255,255,255,0.05);
-  margin: 48px 0;
-}
+.section-divider { border: none; border-top: 1px solid rgba(255,255,255,0.05); margin: 48px 0; }
 
-/* SECTION LABEL */
 .section-label {
   font-size: 10px; letter-spacing: 0.25em;
   text-transform: uppercase; color: var(--zinc-600);
   margin-bottom: 32px; display: flex; align-items: center; gap: 12px;
 }
-.section-label::after {
-  content: ''; flex: 1;
-  height: 1px; background: rgba(255,255,255,0.05);
+.section-label::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.05); }
+
+.kpi-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+@media (min-width: 640px) { .kpi-row { grid-template-columns: repeat(4, 1fr); } }
+.kpi {
+  border: 1px solid rgba(255,255,255,0.05); border-radius: 12px;
+  padding: 16px; background: rgba(255,255,255,0.015);
+}
+.kpi .num { font-size: 24px; font-weight: 300; color: var(--zinc-100); letter-spacing: -0.03em; }
+.kpi .lbl { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--zinc-600); margin-top: 4px; }
+
+footer {
+  position: relative; z-index: 10;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  margin-top: 24px; padding: 40px 24px;
+  text-align: center; color: var(--zinc-600); font-size: 12px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  .project-card:hover, .decision-card:hover, .run-btn:hover { transform: none; }
 }
 </style>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600&family=JetBrains+Mono:wght@300;500&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<div class="grid-mesh"></div>
-<div class="blur-light-wrapper">
+<a href="#contenido" class="skip-link" data-en="Skip to content">Saltar al contenido</a>
+
+<div class="grid-mesh" aria-hidden="true"></div>
+<div class="blur-light-wrapper" aria-hidden="true">
   <div class="blur-light" style="width:55vw;height:55vw;background:#4f46e5;top:-15%;left:-10%;"></div>
   <div class="blur-light" style="width:45vw;height:45vw;background:#06b6d4;bottom:-10%;right:-5%;"></div>
 </div>
 
 <nav>
-  <div style="display:flex;gap:16px;">
-    <span class="mono" style="font-size:10px;letter-spacing:0.2em;color:var(--zinc-500);">System: Online</span>
-    <span class="mono" style="font-size:10px;letter-spacing:0.2em;color:var(--cyan-500);">Stack: .NET · React · SQL</span>
+  <a class="nav-live mono" href="https://supplychaincore-api-lnxj7c.azurewebsites.net" target="_blank" rel="noopener">
+    <span class="pulse-dot" aria-hidden="true"></span>
+    <span data-en="API live on Azure">API en vivo en Azure</span>
+  </a>
+  <div style="display:flex;align-items:center;gap:14px;">
+    <span class="mono" style="font-size:10px;letter-spacing:0.2em;color:var(--cyan-500);">.NET · React · SQL</span>
+    <div class="lang-toggle" role="group" aria-label="Idioma / Language">
+      <button type="button" id="lang-es" aria-pressed="true">ES</button>
+      <button type="button" id="lang-en" aria-pressed="false">EN</button>
+    </div>
   </div>
-  <div class="mono" style="font-size:10px;letter-spacing:0.15em;color:var(--zinc-600);">jlmonteza.dev</div>
 </nav>
 
-<main>
+<main id="contenido">
 
   <div class="grid-12" style="align-items:flex-start;">
 
     <div class="col-5">
       <header style="margin-bottom:32px;">
-        <h2 class="mono" style="font-size:12px;letter-spacing:0.3em;text-transform:uppercase;color:var(--indigo-400);margin-bottom:8px;">
-          Backend &amp; Full-Stack Developer
-        </h2>
+        <h2 class="mono" style="font-size:12px;letter-spacing:0.3em;text-transform:uppercase;color:var(--indigo-400);margin-bottom:10px;"
+            data-en="Backend &amp; Full-Stack Developer">Backend &amp; Full-Stack Developer</h2>
         <h1>José Luis <span class="gradient-text">Monteza</span></h1>
-        <p style="color:var(--zinc-400);font-weight:300;font-size:15px;line-height:1.7;margin-top:16px;margin-bottom:20px;max-width:420px;">
-          Estudiante de Ing. de Sistemas (6.° ciclo, UPN) especializado en
-          <span style="color:var(--cyan-400);font-weight:500;">.NET + React</span>.
-          Construyo sistemas transaccionales con Clean Architecture, JWT, pruebas unitarias
-          y persistencia políglota. 3+ años liderando operaciones en retail
-          con SAP y Kronos — entiendo el negocio detrás del código.
+        <p style="color:var(--zinc-400);font-weight:300;font-size:15px;line-height:1.7;margin:18px 0 12px;max-width:440px;"
+           data-en="I build transactional systems in .NET and React: Clean Architecture, JWT + RBAC security and tested business rules. Systems Engineering student (6th semester, UPN).">
+          Construyo sistemas transaccionales en .NET y React: Clean Architecture, seguridad JWT + RBAC y reglas de negocio probadas. Estudiante de Ing. de Sistemas (6.° ciclo, UPN).
+        </p>
+        <p style="color:var(--zinc-500);font-weight:300;font-size:14px;line-height:1.7;margin-bottom:20px;max-width:440px;"
+           data-en="I came to software after 3+ years leading retail operations with SAP and Kronos, so my projects attack problems I have owned first-hand: inventory, shrinkage and demand planning.">
+          Llegué al software tras más de 3 años liderando operaciones en retail con SAP y Kronos, por eso mis proyectos atacan problemas que manejé en persona: inventarios, merma y planificación de demanda.
         </p>
         <div class="mono" style="display:flex;gap:10px;font-size:11px;flex-wrap:wrap;">
           <a href="https://github.com/joseluismontezamilian12-rgb" target="_blank" rel="noopener" class="btn-social btn-social-cyan">[ GITHUB ]</a>
           <a href="https://www.linkedin.com/in/jos%C3%A9-luis-monteza-milian-8b5835328" target="_blank" rel="noopener" class="btn-social btn-social-zinc">[ LINKEDIN ]</a>
+          <a href="mailto:joseluismontezamilian12@gmail.com" class="btn-social btn-social-zinc">[ EMAIL ]</a>
           <a href="./Jose_Luis_Monteza_CV_FullStack_Developer.pdf" target="_blank" rel="noopener" class="btn-social btn-social-zinc">[ CV_EN ]</a>
           <a href="./Jose_Luis_Monteza_CV_FullStack_Developer_ES.pdf" target="_blank" rel="noopener" class="btn-social btn-social-zinc">[ CV_ES ]</a>
         </div>
@@ -279,12 +341,12 @@ h1 { font-size: 48px; font-weight: 200; letter-spacing: -0.04em; }
 
       <div class="meta-data mono">
         <div class="glass-box meta-card">
-          <span style="color:var(--zinc-600);">Backend</span><br>
-          <strong>ASP.NET Core · EF Core</strong>
+          <span style="color:var(--zinc-600);" data-en="Available for">Disponible para</span><br>
+          <strong data-en="Remote · LATAM contractor">Remoto · contractor LATAM</strong>
         </div>
         <div class="glass-box meta-card" style="border-left:2px solid rgba(6,182,212,0.3);">
-          <span style="color:var(--zinc-600);">Patterns</span><br>
-          <strong style="color:var(--cyan-400);">Clean Arch · JWT · Tests</strong>
+          <span style="color:var(--zinc-600);" data-en="Time zone">Zona horaria</span><br>
+          <strong style="color:var(--cyan-400);" data-en="Lima · GMT-5 · overlaps US">Lima · GMT-5 · cruza con EE.UU.</strong>
         </div>
       </div>
     </div>
@@ -293,33 +355,51 @@ h1 { font-size: 48px; font-weight: 200; letter-spacing: -0.04em; }
       <div class="glass-box" style="padding:28px;">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;flex-wrap:wrap;gap:12px;">
           <div>
-            <h2 class="mono" style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--cyan-400);margin-bottom:6px;">
-              // Proyecto Principal
-            </h2>
-            <h3 style="font-size:24px;font-weight:500;color:var(--zinc-100);">SupplyChainCore</h3>
-            <p style="color:var(--zinc-400);font-size:13px;font-weight:300;margin-top:4px;">
-              Sistema transaccional Full-Stack de gestión de inventarios bajo Clean Architecture.
+            <h2 class="mono" style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--cyan-400);margin-bottom:6px;"
+                data-en="// Featured project">// Proyecto principal</h2>
+            <h3 style="font-size:26px;font-weight:500;color:var(--zinc-100);">SupplyChainCore</h3>
+            <p style="color:var(--zinc-400);font-size:13px;font-weight:300;margin-top:6px;max-width:460px;"
+               data-en="Inventory system built on an immutable ledger. Deployed and running — you can exercise every endpoint from the browser.">
+              Sistema de inventarios sobre un ledger inmutable. Desplegado y corriendo: puedes probar cada endpoint desde el navegador.
             </p>
           </div>
-          <span class="project-card-badge badge-primary mono">Full-Stack</span>
+          <span class="project-card-badge badge-live mono" data-en="Live">En vivo</span>
         </div>
 
-        <div class="stat-grid mono" style="margin-bottom:20px;">
-          <div>Arquitectura: <span class="stat-val-cyan">Clean Arch.</span></div>
-          <div>Seguridad: <span class="stat-val-green">JWT + RBAC</span></div>
-          <div>Testing: <span class="stat-val-indigo">xUnit + Moq</span></div>
-          <div>Base de datos: <span class="stat-val">SQL Server</span></div>
+        <div class="kpi-row" style="margin-bottom:20px;">
+          <div class="kpi"><div class="num">57</div><div class="lbl" data-en="Unit tests">Pruebas unit.</div></div>
+          <div class="kpi"><div class="num">4</div><div class="lbl" data-en="Clean Arch layers">Capas Clean Arch</div></div>
+          <div class="kpi"><div class="num">8</div><div class="lbl" data-en="Endpoints">Endpoints</div></div>
+          <div class="kpi"><div class="num">100k</div><div class="lbl" data-en="PBKDF2 rounds">Iter. PBKDF2</div></div>
         </div>
 
-        <div style="color:var(--zinc-500);font-size:12px;font-weight:300;line-height:1.7;margin-bottom:20px;border-top:1px solid rgba(255,255,255,0.05);padding-top:16px;">
-          Ledger transaccional inmutable para control de stock con validación de negocio en capa de
-          aplicación. Aborta operaciones que generen saldo negativo antes de persistir.
-          Backend desacoplado en 5 capas + frontend React consumiendo la Web API.
+        <div style="color:var(--zinc-500);font-size:12.5px;font-weight:300;line-height:1.75;margin-bottom:20px;border-top:1px solid rgba(255,255,255,0.05);padding-top:16px;"
+             data-en="Every stock movement is validated against the historical balance: any operation that would leave a negative stock is rejected before it persists, in the service layer — never in the UI. Writing to the ledger is restricted to the Admin role, and the authorship of each movement is taken from the token, so no client can sign a movement in someone else's name.">
+          Cada movimiento de stock se valida contra el saldo histórico: toda operación que dejaría stock negativo se rechaza antes de persistir, en la capa de servicio y nunca en la interfaz. Escribir en el ledger está restringido al rol Admin, y la autoría de cada movimiento se toma del token, así ningún cliente puede firmar un movimiento a nombre de otro.
+        </div>
+
+        <div class="stat-grid mono" style="margin-bottom:22px;">
+          <div><span data-en="Architecture">Arquitectura</span>: <span class="stat-val-cyan">Clean Architecture</span></div>
+          <div><span data-en="Security">Seguridad</span>: <span class="stat-val-green">JWT + RBAC</span></div>
+          <div><span data-en="Cloud">Nube</span>: <span class="stat-val-indigo">Azure App Service + SQL</span></div>
+          <div><span data-en="Pipeline">Pipeline</span>: <span class="stat-val">GitHub Actions CI</span></div>
+        </div>
+
+        <div style="background:rgba(52,211,153,0.04);border:1px solid rgba(52,211,153,0.15);border-radius:12px;padding:14px 16px;margin-bottom:20px;">
+          <div class="mono" style="font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--emerald-400);margin-bottom:8px;"
+               data-en="Try it in 30 seconds">Pruébalo en 30 segundos</div>
+          <div style="color:var(--zinc-400);font-size:12px;font-weight:300;line-height:1.7;"
+               data-en="Open Swagger → POST /api/auth/login with operador@supplychain.com / Operador123! → paste the token into Authorize. Read-only account: POST /api/movimientos will answer 403, which is exactly the point.">
+            Abre el Swagger → POST /api/auth/login con operador@supplychain.com / Operador123! → pega el token en Authorize. Es una cuenta de solo lectura: POST /api/movimientos responderá 403, que es justo lo que se quiere demostrar.
+          </div>
         </div>
 
         <div style="display:flex;gap:10px;flex-wrap:wrap;">
-          <a href="https://github.com/joseluismontezamilian12-rgb/SupplyChainCore-FullStack" target="_blank" rel="noopener">
-            <button class="run-btn mono" style="padding:10px 24px;">Ver Repositorio →</button>
+          <a href="https://supplychaincore-api-lnxj7c.azurewebsites.net" target="_blank" rel="noopener" style="text-decoration:none;">
+            <button class="run-btn run-btn-live mono" data-en="Open the live API →">Abrir la API en vivo →</button>
+          </a>
+          <a href="https://github.com/joseluismontezamilian12-rgb/SupplyChainCore-FullStack" target="_blank" rel="noopener" style="text-decoration:none;">
+            <button class="run-btn run-btn-ghost mono" data-en="Source code">Código fuente</button>
           </a>
         </div>
       </div>
@@ -328,105 +408,76 @@ h1 { font-size: 48px; font-weight: 200; letter-spacing: -0.04em; }
 
   <hr class="section-divider">
 
-  <div class="section-label mono">// Proyectos de Ingeniería</div>
+  <div class="section-label mono" data-en="// Professional work">// Trabajo profesional</div>
+
+  <div class="glass-box" style="padding:28px;">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;margin-bottom:18px;">
+      <div>
+        <h3 style="font-size:20px;font-weight:500;"
+            data-en="Automating production allocation — Manzana Verde">Automatización de precantidades — Manzana Verde</h3>
+        <p class="mono" style="font-size:11px;color:var(--zinc-500);margin-top:6px;"
+           data-en="Food-tech · 1.4M+ orders · Peru, Mexico, Colombia">Food-tech · +1.4M pedidos · Perú, México, Colombia</p>
+      </div>
+      <span class="project-card-badge badge-work mono" data-en="Proof of concept · private code">Prueba de concepto · código privado</span>
+    </div>
+
+    <div style="color:var(--zinc-400);font-size:13px;font-weight:300;line-height:1.75;margin-bottom:20px;"
+         data-en="How many dishes each of the 7 partner kitchens should cook tomorrow was decided by hand. I automated that decision: each kitchen is scored on punctuality, quality incidents, availability and cancellations; demand is then routed by district adjacency under hard capacity caps, and every assignment can be traced back to the data that produced it. Built as a reusable TypeScript library exposed through a CLI, an API and a web screen — Operations tunes capacity, adjacency and demand in editable files, without a deployment.">
+      Cuántos platos debía cocinar al día siguiente cada una de las 7 cocinas aliadas se decidía a mano. Automaticé esa decisión: cada cocina recibe un score por puntualidad, incidencias de calidad, disponibilidad y cancelaciones; luego la demanda se enruta por adyacencia de distritos bajo topes duros de capacidad, y cada asignación es trazable hasta los datos que la produjeron. Construido como librería TypeScript reutilizable, expuesta por CLI, API y pantalla web — Operaciones ajusta capacidad, adyacencia y demanda en archivos editables, sin desplegar.
+    </div>
+
+    <div class="kpi-row" style="margin-bottom:18px;">
+      <div class="kpi"><div class="num" style="color:var(--emerald-400);">~46%</div><div class="lbl" data-en="Fewer dishes from flagged kitchens">Menos platos de cocinas sancionadas</div></div>
+      <div class="kpi"><div class="num">189</div><div class="lbl" data-en="Automated tests">Pruebas automatizadas</div></div>
+      <div class="kpi"><div class="num">25</div><div class="lbl" data-en="Days of real data">Días de datos reales</div></div>
+      <div class="kpi"><div class="num">7</div><div class="lbl" data-en="Kitchens in the network">Cocinas en la red</div></div>
+    </div>
+
+    <p style="color:var(--zinc-500);font-size:12px;font-weight:300;line-height:1.7;border-top:1px solid rgba(255,255,255,0.05);padding-top:16px;"
+       data-en="Validated against 25 days of real order data: dishes produced in kitchens carrying critical quality flags drop from 48 to 26 — the figure that holds regardless of modelling assumptions. It is a working proof of concept: rolling it out is blocked on the real physical capacity caps. The code belongs to the company and is not public.">
+      Validado con 25 días de datos reales de pedidos: los platos producidos en cocinas con incidencias críticas de calidad bajan de 48 a 26 — la cifra que se sostiene sin depender de supuestos de modelado. Es una prueba de concepto funcional: su despliegue está bloqueado por los topes de capacidad física reales. El código es de la empresa y no es público.
+    </p>
+  </div>
+
+  <hr class="section-divider">
+
+  <div class="section-label mono" data-en="// Engineering projects">// Proyectos de ingeniería</div>
 
   <div class="grid-12" style="align-items:stretch;">
 
     <div class="col-4">
       <div class="project-card">
         <div>
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-            <span class="project-card-badge badge-primary mono">Full-Stack · Principal</span>
+          <div style="margin-bottom:12px;">
+            <span class="project-card-badge badge-live mono" data-en="Full-stack · Live">Full-Stack · En vivo</span>
           </div>
           <h3 style="font-size:18px;font-weight:500;margin-bottom:8px;">SupplyChainCore</h3>
-          <p style="color:var(--zinc-400);font-size:13px;font-weight:300;line-height:1.6;">
-            Sistema ERP de inventarios con Clean Architecture, autenticación JWT + RBAC
-            y pruebas unitarias con xUnit y Moq.
+          <p style="color:var(--zinc-400);font-size:13px;font-weight:300;line-height:1.6;"
+             data-en="Inventory system with an immutable ledger, Clean Architecture, JWT + RBAC and 57 unit tests. Deployed on Azure with public API docs.">
+            Sistema de inventarios con ledger inmutable, Clean Architecture, JWT + RBAC y 57 pruebas unitarias. Desplegado en Azure con documentación pública de la API.
           </p>
         </div>
         <div class="skill-list mono">
-          <span class="skill-pill">C# / .NET 9</span>
-          <span class="skill-pill">ASP.NET Web API</span>
-          <span class="skill-pill">SQL Server</span>
+          <span class="skill-pill">C# / .NET 10</span>
+          <span class="skill-pill">ASP.NET Core</span>
+          <span class="skill-pill">Azure SQL</span>
           <span class="skill-pill">EF Core</span>
           <span class="skill-pill">React / Vite</span>
           <span class="skill-pill">xUnit · Moq</span>
+          <span class="skill-pill">Docker</span>
         </div>
         <div class="stat-grid mono" style="margin-top:auto;">
-          <div>Capas: <span class="stat-val">5 desacopladas</span></div>
-          <div>Auth: <span class="stat-val-cyan">JWT + RBAC</span></div>
-          <div>Tests: <span class="stat-val-green">Unit + Mock</span></div>
-          <div>Patrón: <span class="stat-val-indigo">Repository</span></div>
-        </div>
-        <a href="https://github.com/joseluismontezamilian12-rgb/SupplyChainCore-FullStack" target="_blank" rel="noopener" style="text-decoration:none;">
-          <button class="run-btn mono" style="width:100%;text-align:center;padding:12px 0;">Código fuente →</button>
-        </a>
-      </div>
-    </div>
-
-    <div class="col-4">
-      <div class="project-card">
-        <div>
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-            <span class="project-card-badge badge-secondary mono">Backend · Microservicios</span>
-          </div>
-          <h3 style="font-size:18px;font-weight:500;margin-bottom:8px;">ECommerceEcosystem</h3>
-          <p style="color:var(--zinc-400);font-size:13px;font-weight:300;line-height:1.6;">
-            Ecosistema de microservicios con Catalog.API (SQL Server) y Basket.API (Redis).
-            Comunicación síncrona HTTP entre servicios con validación de precios en tiempo real.
-          </p>
-        </div>
-        <div class="skill-list mono">
-          <span class="skill-pill">C# / .NET</span>
-          <span class="skill-pill">Minimal APIs</span>
-          <span class="skill-pill">SQL Server</span>
-          <span class="skill-pill">Redis</span>
-          <span class="skill-pill">EF Core</span>
-          <span class="skill-pill">Swagger</span>
-        </div>
-        <div class="stat-grid mono" style="margin-top:auto;">
-          <div>Servicios: <span class="stat-val">2 autónomos</span></div>
-          <div>Cache: <span class="stat-val-cyan">Redis NoSQL</span></div>
-          <div>Comm.: <span class="stat-val-green">HTTP sync</span></div>
-          <div>Docs: <span class="stat-val-indigo">Swagger UI</span></div>
-        </div>
-        <a href="https://github.com/joseluismontezamilian12-rgb/ECommerceEcosystem" target="_blank" rel="noopener" style="text-decoration:none;">
-          <button class="run-btn mono" style="width:100%;text-align:center;padding:12px 0;">Código fuente →</button>
-        </a>
-      </div>
-    </div>
-
-    <div class="col-4">
-      <div class="project-card">
-        <div>
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-            <span class="project-card-badge badge-tertiary mono">Frontend · SPA</span>
-          </div>
-          <h3 style="font-size:18px;font-weight:500;margin-bottom:8px;">ECS Dashboard</h3>
-          <p style="color:var(--zinc-400);font-size:13px;font-weight:300;line-height:1.6;">
-            SPA estilo retro-terminal que monitorea un núcleo ECS simulado en tiempo real:
-            telemetría a 60 Hz y renderizado nativo en canvas de 150 entidades.
-          </p>
-        </div>
-        <div class="skill-list mono">
-          <span class="skill-pill">React 19</span>
-          <span class="skill-pill">Vite</span>
-          <span class="skill-pill">Tailwind CSS 4</span>
-          <span class="skill-pill">Canvas API</span>
-          <span class="skill-pill">GitHub Pages</span>
-        </div>
-        <div class="stat-grid mono" style="margin-top:auto;">
-          <div>Render: <span class="stat-val">Canvas 60 FPS</span></div>
-          <div>Build: <span class="stat-val-cyan">Vite HMR</span></div>
-          <div>UI: <span class="stat-val-green">Tailwind 4</span></div>
-          <div>Deploy: <span class="stat-val-indigo">GitHub Pages</span></div>
+          <div><span data-en="Tests">Pruebas</span>: <span class="stat-val-green" data-en="57 passing">57 en verde</span></div>
+          <div><span data-en="Auth">Auth</span>: <span class="stat-val-cyan">JWT + RBAC</span></div>
+          <div><span data-en="Hashing">Hashing</span>: <span class="stat-val">PBKDF2</span></div>
+          <div><span data-en="CI">CI</span>: <span class="stat-val-indigo">GitHub Actions</span></div>
         </div>
         <div style="display:flex;gap:10px;">
-          <a href="https://joseluismontezamilian12-rgb.github.io/ecs-dashboard/" target="_blank" rel="noopener" style="text-decoration:none;flex:1;">
-            <button class="run-btn mono" style="width:100%;text-align:center;padding:12px 0;">Demo en vivo 🚀</button>
+          <a href="https://supplychaincore-api-lnxj7c.azurewebsites.net" target="_blank" rel="noopener" style="text-decoration:none;flex:1;">
+            <button class="run-btn run-btn-live mono" style="width:100%;padding:12px 0;" data-en="Live API">API en vivo</button>
           </a>
-          <a href="https://github.com/joseluismontezamilian12-rgb/ecs-dashboard" target="_blank" rel="noopener" style="text-decoration:none;flex:1;">
-            <button class="run-btn mono" style="width:100%;text-align:center;padding:12px 0;">Código fuente →</button>
+          <a href="https://github.com/joseluismontezamilian12-rgb/SupplyChainCore-FullStack" target="_blank" rel="noopener" style="text-decoration:none;flex:1;">
+            <button class="run-btn run-btn-ghost mono" style="width:100%;padding:12px 0;" data-en="Code">Código</button>
           </a>
         </div>
       </div>
@@ -435,13 +486,13 @@ h1 { font-size: 48px; font-weight: 200; letter-spacing: -0.04em; }
     <div class="col-4">
       <div class="project-card">
         <div>
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-            <span class="project-card-badge badge-tertiary mono">Frontend · Piloto real</span>
+          <div style="margin-bottom:12px;">
+            <span class="project-card-badge badge-tertiary mono" data-en="Frontend · Real pilot">Frontend · Piloto real</span>
           </div>
           <h3 style="font-size:18px;font-weight:500;margin-bottom:8px;">Merma AI</h3>
-          <p style="color:var(--zinc-400);font-size:13px;font-weight:300;line-height:1.6;">
-            Control de pedidos y merma para food retail, piloteado en la tienda que gerencié:
-            recomienda cuánto pedir según el consumo real (pedido − merma) con justificación por producto.
+          <p style="color:var(--zinc-400);font-size:13px;font-weight:300;line-height:1.6;"
+             data-en="Ordering and shrinkage control for food retail, piloted in the store I managed against its real 78-SKU catalog. Recommends how much to order from real consumption (ordered − shrinkage), justified product by product.">
+            Control de pedidos y merma para food retail, piloteado en la tienda que gerencié con su catálogo real de 78 SKUs. Recomienda cuánto pedir según el consumo real (pedido − merma), justificado producto por producto.
           </p>
         </div>
         <div class="skill-list mono">
@@ -451,17 +502,84 @@ h1 { font-size: 48px; font-weight: 200; letter-spacing: -0.04em; }
           <span class="skill-pill">GitHub Pages</span>
         </div>
         <div class="stat-grid mono" style="margin-top:auto;">
-          <div>Piloto: <span class="stat-val">Tienda real</span></div>
-          <div>Datos: <span class="stat-val-cyan">78 SKUs</span></div>
-          <div>Lógica: <span class="stat-val-green">Explicable</span></div>
-          <div>Deploy: <span class="stat-val-indigo">GitHub Pages</span></div>
+          <div><span data-en="Pilot">Piloto</span>: <span class="stat-val" data-en="Real store">Tienda real</span></div>
+          <div><span data-en="Catalog">Catálogo</span>: <span class="stat-val-cyan">78 SKUs</span></div>
+          <div><span data-en="Logic">Lógica</span>: <span class="stat-val-green" data-en="Explainable">Explicable</span></div>
+          <div><span data-en="Data">Datos</span>: <span class="stat-val-indigo" data-en="Sanitized demo">Demo sanitizada</span></div>
         </div>
         <div style="display:flex;gap:10px;">
           <a href="https://joseluismontezamilian12-rgb.github.io/merma-ai/" target="_blank" rel="noopener" style="text-decoration:none;flex:1;">
-            <button class="run-btn mono" style="width:100%;text-align:center;padding:12px 0;">Demo en vivo 🚀</button>
+            <button class="run-btn mono" style="width:100%;padding:12px 0;" data-en="Live demo">Demo en vivo</button>
           </a>
           <a href="https://github.com/joseluismontezamilian12-rgb/merma-ai" target="_blank" rel="noopener" style="text-decoration:none;flex:1;">
-            <button class="run-btn mono" style="width:100%;text-align:center;padding:12px 0;">Código fuente →</button>
+            <button class="run-btn run-btn-ghost mono" style="width:100%;padding:12px 0;" data-en="Code">Código</button>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div class="project-card">
+        <div>
+          <div style="margin-bottom:12px;">
+            <span class="project-card-badge badge-secondary mono" data-en="Backend · Distributed services">Backend · Servicios distribuidos</span>
+          </div>
+          <h3 style="font-size:18px;font-weight:500;margin-bottom:8px;">ECommerceEcosystem</h3>
+          <p style="color:var(--zinc-400);font-size:13px;font-weight:300;line-height:1.6;"
+             data-en="Two independently deployable .NET services — Catalog (SQL Server) and Basket (Redis) — talking over HTTP. The basket re-reads every price from the catalog before saving, so a tampered client price never survives.">
+            Dos servicios .NET desplegables de forma independiente — Catálogo (SQL Server) y Carrito (Redis) — comunicados por HTTP. El carrito vuelve a leer cada precio del catálogo antes de guardar, así un precio manipulado desde el cliente nunca sobrevive.
+          </p>
+        </div>
+        <div class="skill-list mono">
+          <span class="skill-pill">C# / .NET 10</span>
+          <span class="skill-pill">Minimal APIs</span>
+          <span class="skill-pill">SQL Server</span>
+          <span class="skill-pill">Redis</span>
+          <span class="skill-pill">EF Core</span>
+          <span class="skill-pill">Swagger</span>
+        </div>
+        <div class="stat-grid mono" style="margin-top:auto;">
+          <div><span data-en="Services">Servicios</span>: <span class="stat-val" data-en="2 autonomous">2 autónomos</span></div>
+          <div><span data-en="Cache">Caché</span>: <span class="stat-val-cyan">Redis</span></div>
+          <div><span data-en="Entities">Entidades</span>: <span class="stat-val-green" data-en="immutable records">records inmutables</span></div>
+          <div><span data-en="Contracts">Contratos</span>: <span class="stat-val-indigo">DTOs</span></div>
+        </div>
+        <a href="https://github.com/joseluismontezamilian12-rgb/ECommerceEcosystem" target="_blank" rel="noopener" style="text-decoration:none;">
+          <button class="run-btn run-btn-ghost mono" style="width:100%;padding:12px 0;" data-en="Source code">Código fuente</button>
+        </a>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div class="project-card">
+        <div>
+          <div style="margin-bottom:12px;">
+            <span class="project-card-badge badge-primary mono" data-en="Frontend · SPA">Frontend · SPA</span>
+          </div>
+          <h3 style="font-size:18px;font-weight:500;margin-bottom:8px;">ECS Dashboard</h3>
+          <p style="color:var(--zinc-400);font-size:13px;font-weight:300;line-height:1.6;"
+             data-en="Retro-terminal SPA monitoring a simulated Entity-Component-System core in real time: 60 Hz telemetry and native canvas rendering of 150 entities.">
+            SPA estilo retro-terminal que monitorea un núcleo Entity-Component-System simulado en tiempo real: telemetría a 60 Hz y renderizado nativo en canvas de 150 entidades.
+          </p>
+        </div>
+        <div class="skill-list mono">
+          <span class="skill-pill">React 19</span>
+          <span class="skill-pill">Vite</span>
+          <span class="skill-pill">Tailwind CSS 4</span>
+          <span class="skill-pill">Canvas API</span>
+        </div>
+        <div class="stat-grid mono" style="margin-top:auto;">
+          <div><span data-en="Telemetry">Telemetría</span>: <span class="stat-val-cyan">60 Hz</span></div>
+          <div><span data-en="Entities">Entidades</span>: <span class="stat-val">150</span></div>
+          <div><span data-en="Render">Render</span>: <span class="stat-val-green" data-en="Native canvas">Canvas nativo</span></div>
+          <div><span data-en="Deploy">Deploy</span>: <span class="stat-val-indigo">GitHub Pages</span></div>
+        </div>
+        <div style="display:flex;gap:10px;">
+          <a href="https://joseluismontezamilian12-rgb.github.io/ecs-dashboard/" target="_blank" rel="noopener" style="text-decoration:none;flex:1;">
+            <button class="run-btn mono" style="width:100%;padding:12px 0;" data-en="Live demo">Demo en vivo</button>
+          </a>
+          <a href="https://github.com/joseluismontezamilian12-rgb/ecs-dashboard" target="_blank" rel="noopener" style="text-decoration:none;flex:1;">
+            <button class="run-btn run-btn-ghost mono" style="width:100%;padding:12px 0;" data-en="Code">Código</button>
           </a>
         </div>
       </div>
@@ -474,18 +592,22 @@ h1 { font-size: 48px; font-weight: 200; letter-spacing: -0.04em; }
 
     <div class="col-5">
       <div class="glass-box" style="padding:24px;">
-        <h2 class="mono" style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--indigo-400);margin-bottom:16px;">// Stack Tecnológico</h2>
-        <h3 style="font-size:18px;font-weight:500;margin-bottom:20px;">Infraestructura de Software</h3>
+        <h2 class="mono" style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--indigo-400);margin-bottom:16px;"
+            data-en="// Tech stack">// Stack tecnológico</h2>
+        <h3 style="font-size:18px;font-weight:500;margin-bottom:20px;"
+            data-en="What I actually use">Lo que realmente uso</h3>
 
         <div style="display:flex;flex-direction:column;gap:18px;">
           <div>
             <h4 class="mono" style="font-size:11px;color:var(--zinc-500);margin-bottom:8px;text-transform:uppercase;">Backend</h4>
             <div class="skill-list">
-              <span class="skill-pill" style="color:var(--cyan-400);border-color:rgba(34,211,238,0.3);">C# / .NET</span>
+              <span class="skill-pill" style="color:var(--cyan-400);border-color:rgba(34,211,238,0.3);">C# / .NET 10</span>
               <span class="skill-pill" style="color:var(--cyan-400);border-color:rgba(34,211,238,0.3);">ASP.NET Core</span>
               <span class="skill-pill">EF Core</span>
               <span class="skill-pill">JWT · RBAC</span>
               <span class="skill-pill">Minimal APIs</span>
+              <span class="skill-pill">LINQ · async/await</span>
+              <span class="skill-pill">SOLID</span>
             </div>
           </div>
           <div>
@@ -496,38 +618,47 @@ h1 { font-size: 48px; font-weight: 200; letter-spacing: -0.04em; }
               <span class="skill-pill">Vite</span>
               <span class="skill-pill">Tailwind CSS</span>
               <span class="skill-pill">Recharts</span>
+              <span class="skill-pill">Canvas API</span>
             </div>
           </div>
           <div>
-            <h4 class="mono" style="font-size:11px;color:var(--zinc-500);margin-bottom:8px;text-transform:uppercase;">Datos</h4>
+            <h4 class="mono" style="font-size:11px;color:var(--zinc-500);margin-bottom:8px;text-transform:uppercase;"
+                data-en="Data">Datos</h4>
             <div class="skill-list">
               <span class="skill-pill" style="color:var(--emerald-400);border-color:rgba(52,211,153,0.3);">SQL Server</span>
-              <span class="skill-pill" style="color:var(--emerald-400);border-color:rgba(52,211,153,0.3);">Redis</span>
-              <span class="skill-pill">PostgreSQL</span>
+              <span class="skill-pill" style="color:var(--emerald-400);border-color:rgba(52,211,153,0.3);">Azure SQL</span>
+              <span class="skill-pill">Redis</span>
               <span class="skill-pill">EF Migrations</span>
             </div>
           </div>
           <div>
-            <h4 class="mono" style="font-size:11px;color:var(--zinc-500);margin-bottom:8px;text-transform:uppercase;">Testing &amp; Herramientas</h4>
+            <h4 class="mono" style="font-size:11px;color:var(--zinc-500);margin-bottom:8px;text-transform:uppercase;"
+                data-en="Testing &amp; delivery">Testing y entrega</h4>
             <div class="skill-list">
               <span class="skill-pill">xUnit · Moq</span>
-              <span class="skill-pill">Swagger</span>
+              <span class="skill-pill">GitHub Actions</span>
+              <span class="skill-pill">Docker</span>
+              <span class="skill-pill">Azure App Service</span>
+              <span class="skill-pill">Swagger / OpenAPI</span>
               <span class="skill-pill">Git · GitFlow</span>
-              <span class="skill-pill">Metodologías Ágiles</span>
             </div>
           </div>
           <div>
-            <h4 class="mono" style="font-size:11px;color:var(--zinc-500);margin-bottom:8px;text-transform:uppercase;">ERP Empresarial</h4>
+            <h4 class="mono" style="font-size:11px;color:var(--zinc-500);margin-bottom:8px;text-transform:uppercase;"
+                data-en="Business systems">Sistemas de negocio</h4>
             <div class="skill-list">
               <span class="skill-pill" style="color:var(--amber-400);border-color:rgba(251,191,36,0.3);">SAP · Logística</span>
               <span class="skill-pill" style="color:var(--amber-400);border-color:rgba(251,191,36,0.3);">Kronos · RRHH</span>
             </div>
           </div>
           <div>
-            <h4 class="mono" style="font-size:11px;color:var(--zinc-500);margin-bottom:8px;text-transform:uppercase;">Idiomas</h4>
+            <h4 class="mono" style="font-size:11px;color:var(--zinc-500);margin-bottom:8px;text-transform:uppercase;"
+                data-en="Languages">Idiomas</h4>
             <div class="skill-list">
-              <span class="skill-pill" style="color:var(--zinc-100);border-color:var(--zinc-700);">Español · Nativo</span>
-              <span class="skill-pill" style="color:var(--amber-400);border-color:rgba(251,191,36,0.3);">Inglés · Intermedio</span>
+              <span class="skill-pill" style="color:var(--zinc-100);border-color:var(--zinc-700);"
+                    data-en="Spanish · Native">Español · Nativo</span>
+              <span class="skill-pill" style="color:var(--amber-400);border-color:rgba(251,191,36,0.3);"
+                    data-en="English · B1, async-first">Inglés · B1, async-first</span>
             </div>
           </div>
         </div>
@@ -536,38 +667,55 @@ h1 { font-size: 48px; font-weight: 200; letter-spacing: -0.04em; }
 
     <div class="col-7">
       <div class="glass-box" style="padding:24px;">
-        <h2 class="mono" style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--cyan-400);margin-bottom:16px;">// Línea de Tiempo</h2>
-        <h3 style="font-size:18px;font-weight:500;margin-bottom:24px;">Evolución como Desarrollador</h3>
+        <h2 class="mono" style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--cyan-400);margin-bottom:16px;"
+            data-en="// Timeline">// Línea de tiempo</h2>
+        <h3 style="font-size:18px;font-weight:500;margin-bottom:24px;"
+            data-en="From running operations to building the systems that run them">De operar el negocio a construir los sistemas que lo operan</h3>
 
         <div style="position:relative;border-left:1px solid var(--zinc-800);padding-left:24px;margin-left:8px;">
 
           <div style="position:relative;margin-bottom:28px;">
+            <span style="position:absolute;left:-29px;top:4px;width:9px;height:9px;border-radius:50%;background:var(--emerald-400);box-shadow:0 0 10px var(--emerald-400);"></span>
+            <div class="mono" style="font-size:11px;color:var(--emerald-400);font-weight:500;"
+                 data-en="2026 — Today">2026 — Actualidad</div>
+            <h4 style="font-size:14px;font-weight:500;color:var(--zinc-100);margin:4px 0;"
+                data-en="Production allocation at Manzana Verde · SupplyChainCore live on Azure">Precantidades en Manzana Verde · SupplyChainCore desplegado en Azure</h4>
+            <p style="color:var(--zinc-400);font-size:12px;font-weight:300;line-height:1.7;"
+               data-en="Automated a daily operational decision across a 7-kitchen network, backed by 189 tests. Took SupplyChainCore from repository to a running service: JWT with role-based authorization, PBKDF2 password hashing, containerisation and CI on every push.">
+              Automaticé una decisión operativa diaria en una red de 7 cocinas, respaldada por 189 pruebas. Llevé SupplyChainCore de repositorio a servicio corriendo: JWT con autorización por roles, hashing PBKDF2 de contraseñas, contenedorización y CI en cada push.
+            </p>
+          </div>
+
+          <div style="position:relative;margin-bottom:28px;">
             <span style="position:absolute;left:-29px;top:4px;width:9px;height:9px;border-radius:50%;background:var(--cyan-400);box-shadow:0 0 10px var(--cyan-500);"></span>
-            <div class="mono" style="font-size:11px;color:var(--cyan-400);font-weight:bold;">2026 — Actualidad</div>
-            <h4 style="font-size:14px;font-weight:500;color:var(--zinc-100);margin:4px 0;">SupplyChainCore + ECommerceEcosystem</h4>
-            <p style="color:var(--zinc-400);font-size:12px;font-weight:300;line-height:1.6;">
-              Implementación de Clean Architecture en un sistema Full-Stack transaccional con JWT, RBAC y unit tests.
-              Diseño de ecosistema de microservicios con persistencia políglota (SQL Server + Redis).
+            <div class="mono" style="font-size:11px;color:var(--cyan-400);font-weight:500;">2026</div>
+            <h4 style="font-size:14px;font-weight:500;color:var(--zinc-100);margin:4px 0;"
+                data-en="Merma AI, piloted in a real store">Merma AI, piloteado en una tienda real</h4>
+            <p style="color:var(--zinc-400);font-size:12px;font-weight:300;line-height:1.7;"
+               data-en="Built my own tool while managing the store and ran it against its real 78-SKU catalog — the first time my code decided something a business acted on.">
+              Construí mi propia herramienta mientras gerenciaba la tienda y la corrí con su catálogo real de 78 SKUs — la primera vez que mi código decidió algo sobre lo que el negocio actuó.
             </p>
           </div>
 
           <div style="position:relative;margin-bottom:28px;">
             <span style="position:absolute;left:-29px;top:4px;width:9px;height:9px;border-radius:50%;background:var(--zinc-700);"></span>
             <div class="mono" style="font-size:11px;color:var(--zinc-500);">2025</div>
-            <h4 style="font-size:14px;font-weight:500;color:var(--zinc-300);margin:4px 0;">ECS Dashboard (React SPA) + Backend APIs</h4>
-            <p style="color:var(--zinc-500);font-size:12px;font-weight:300;line-height:1.6;">
-              Desarrollo de SPA con React y Vite con telemetría en tiempo real y renderizado en canvas.
-              Primeras implementaciones de APIs RESTful y exploración de patrones de diseño en .NET.
+            <h4 style="font-size:14px;font-weight:500;color:var(--zinc-300);margin:4px 0;"
+                data-en="Distributed services and real-time interfaces">Servicios distribuidos e interfaces en tiempo real</h4>
+            <p style="color:var(--zinc-500);font-size:12px;font-weight:300;line-height:1.7;"
+               data-en="ECommerceEcosystem: two .NET services with polyglot persistence (SQL Server + Redis). ECS Dashboard: React and Vite with 60 Hz telemetry on canvas.">
+              ECommerceEcosystem: dos servicios .NET con persistencia políglota (SQL Server + Redis). ECS Dashboard: React y Vite con telemetría a 60 Hz sobre canvas.
             </p>
           </div>
 
           <div style="position:relative;">
             <span style="position:absolute;left:-29px;top:4px;width:9px;height:9px;border-radius:50%;background:var(--zinc-800);"></span>
             <div class="mono" style="font-size:11px;color:var(--zinc-600);">2024</div>
-            <h4 style="font-size:14px;font-weight:500;color:var(--zinc-400);margin:4px 0;">Fundamentos: Bases de Datos, Algoritmos y Web</h4>
-            <p style="color:var(--zinc-600);font-size:12px;font-weight:300;line-height:1.6;">
-              Primeros proyectos en C#, modelado relacional con SQL Server y programación web.
-              Inicio en estructuras de datos y lógica algorítmica avanzada.
+            <h4 style="font-size:14px;font-weight:500;color:var(--zinc-400);margin:4px 0;"
+                data-en="Foundations: databases, algorithms and web">Fundamentos: bases de datos, algoritmos y web</h4>
+            <p style="color:var(--zinc-600);font-size:12px;font-weight:300;line-height:1.7;"
+               data-en="First projects in C#, relational modelling with SQL Server, and the start of Systems Engineering at UPN.">
+              Primeros proyectos en C#, modelado relacional con SQL Server e inicio de Ingeniería de Sistemas en UPN.
             </p>
           </div>
         </div>
@@ -578,45 +726,114 @@ h1 { font-size: 48px; font-weight: 200; letter-spacing: -0.04em; }
   <hr class="section-divider">
 
   <div class="glass-box" style="padding:24px;">
-    <h2 class="mono" style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--indigo-400);margin-bottom:16px;">// Technical Logs &amp; Research</h2>
-    <h3 style="font-size:18px;font-weight:500;margin-bottom:24px;">Notas de Ingeniería</h3>
+    <h2 class="mono" style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--indigo-400);margin-bottom:16px;"
+        data-en="// Engineering decisions">// Decisiones de ingeniería</h2>
+    <h3 style="font-size:18px;font-weight:500;margin-bottom:8px;"
+        data-en="Three choices worth defending">Tres decisiones que vale la pena defender</h3>
+    <p style="color:var(--zinc-500);font-size:12.5px;font-weight:300;line-height:1.7;margin-bottom:24px;max-width:720px;"
+       data-en="Each one links to the exact file that implements it — no article to read, just the code.">
+      Cada una enlaza al archivo exacto que la implementa — no hay artículo que leer, solo el código.
+    </p>
 
     <div style="display:flex;flex-direction:column;gap:16px;">
-      <div class="log-card">
-        <div>
-          <span class="mono" style="font-size:11px;color:var(--cyan-400);">[LOG_0x01]</span>
-          <h4 style="font-size:15px;font-weight:500;margin:4px 0;color:var(--zinc-100);">Clean Architecture en .NET: Por qué separar dominio, aplicación e infraestructura</h4>
-          <p style="color:var(--zinc-400);font-size:12px;font-weight:300;line-height:1.5;">
-            Análisis práctico de las 5 capas de SupplyChainCore y cómo el desacoplamiento permite cambiar la base de datos sin tocar la lógica de negocio.
-          </p>
-        </div>
-        <span class="mono" style="font-size:11px;color:var(--zinc-500);border:1px solid var(--zinc-800);padding:4px 10px;border-radius:6px;background:rgba(0,0,0,0.3);white-space:nowrap;">4 min read</span>
-      </div>
 
-      <div class="log-card">
-        <div>
-          <span class="mono" style="font-size:11px;color:var(--cyan-400);">[LOG_0x02]</span>
-          <h4 style="font-size:15px;font-weight:500;margin:4px 0;color:var(--zinc-100);">¿Qué es Entity Component System (ECS) y por qué supera a la OOP tradicional?</h4>
-          <p style="color:var(--zinc-400);font-size:12px;font-weight:300;line-height:1.5;">
-            Análisis del desacoplamiento total de datos y lógica para mitigar las jerarquías rígidas de la herencia en simulaciones masivas.
-          </p>
-        </div>
-        <span class="mono" style="font-size:11px;color:var(--zinc-500);border:1px solid var(--zinc-800);padding:4px 10px;border-radius:6px;background:rgba(0,0,0,0.3);white-space:nowrap;">3 min read</span>
-      </div>
+      <a class="decision-card" href="https://github.com/joseluismontezamilian12-rgb/SupplyChainCore-FullStack/blob/main/SupplyChainCore.Application/Services/MovimientoService.cs" target="_blank" rel="noopener">
+        <span class="mono" style="font-size:11px;color:var(--cyan-400);">[ 01 ]</span>
+        <h4 data-en="The stock rule lives in the service layer, not in the UI">La regla de stock vive en la capa de servicio, no en la interfaz</h4>
+        <p data-en="Before persisting an outbound movement, the service computes the historical balance and rejects anything that would leave a negative stock. Putting that check in the frontend would make it a suggestion; here it is an invariant that no client can bypass.">
+          Antes de persistir una salida, el servicio calcula el saldo histórico y rechaza cualquier operación que dejaría stock negativo. Poner esa validación en el frontend la convertiría en una sugerencia; aquí es un invariante que ningún cliente puede saltarse.
+        </p>
+        <span class="src">MovimientoService.cs →</span>
+      </a>
 
-      <div class="log-card">
-        <div>
-          <span class="mono" style="font-size:11px;color:var(--cyan-400);">[LOG_0x03]</span>
-          <h4 style="font-size:15px;font-weight:500;margin:4px 0;color:var(--zinc-100);">Redis vs SQL Server: Cuándo usar caché NoSQL en una arquitectura de microservicios</h4>
-          <p style="color:var(--zinc-400);font-size:12px;font-weight:300;line-height:1.5;">
-            Decisiones de persistencia políglota en ECommerceEcosystem: por qué el carrito va en Redis y el catálogo en SQL Server.
-          </p>
-        </div>
-        <span class="mono" style="font-size:11px;color:var(--zinc-500);border:1px solid var(--zinc-800);padding:4px 10px;border-radius:6px;background:rgba(0,0,0,0.3);white-space:nowrap;">5 min read</span>
-      </div>
+      <a class="decision-card" href="https://github.com/joseluismontezamilian12-rgb/SupplyChainCore-FullStack/blob/main/SupplyChainCore.WebApi/Controllers/MovimientosController.cs" target="_blank" rel="noopener">
+        <span class="mono" style="font-size:11px;color:var(--cyan-400);">[ 02 ]</span>
+        <h4 data-en="Who signs a movement comes from the token, never from the request body">Quién firma un movimiento sale del token, nunca del cuerpo de la petición</h4>
+        <p data-en="The user id is read from the NameIdentifier claim. If the client could choose it, anyone could record a movement in someone else's name and the ledger would stop being a trustworthy audit trail.">
+          El identificador de usuario se lee del claim NameIdentifier. Si el cliente pudiera elegirlo, cualquiera podría registrar un movimiento a nombre de otro y el ledger dejaría de ser una bitácora auditable.
+        </p>
+        <span class="src">MovimientosController.cs →</span>
+      </a>
+
+      <a class="decision-card" href="https://github.com/joseluismontezamilian12-rgb/ECommerceEcosystem/blob/master/Basket.API/Program.cs" target="_blank" rel="noopener">
+        <span class="mono" style="font-size:11px;color:var(--cyan-400);">[ 03 ]</span>
+        <h4 data-en="The basket never trusts the price the client sends">El carrito nunca confía en el precio que envía el cliente</h4>
+        <p data-en="Every item is re-fetched from the catalog service and its name and price are overwritten before saving. A tampered price does not survive the round trip — the check is server-side, where the client cannot reach it.">
+          Cada ítem se vuelve a consultar al servicio de catálogo y su nombre y precio se sobrescriben antes de guardar. Un precio manipulado no sobrevive el viaje de ida y vuelta: la validación está del lado del servidor, donde el cliente no llega.
+        </p>
+        <span class="src">Basket.API/Program.cs →</span>
+      </a>
+
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <div class="glass-box" style="padding:36px 28px;text-align:center;">
+    <h3 style="font-size:24px;font-weight:300;letter-spacing:-0.03em;margin-bottom:10px;"
+        data-en="Open to backend and full-stack .NET roles">Disponible para posiciones backend y full-stack .NET</h3>
+    <p style="color:var(--zinc-400);font-size:14px;font-weight:300;line-height:1.7;max-width:560px;margin:0 auto 24px;"
+       data-en="Remote, as a LATAM contractor or full-time. Based in Lima (GMT-5), overlapping US working hours. Comfortable working async and in written English.">
+      Remoto, como contractor desde LATAM o a tiempo completo. Con base en Lima (GMT-5), cruzando el horario laboral de EE. UU. Cómodo trabajando en asíncrono y en inglés escrito.
+    </p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+      <a href="mailto:joseluismontezamilian12@gmail.com" style="text-decoration:none;">
+        <button class="run-btn mono" data-en="Write to me">Escríbeme</button>
+      </a>
+      <a href="https://www.linkedin.com/in/jos%C3%A9-luis-monteza-milian-8b5835328" target="_blank" rel="noopener" style="text-decoration:none;">
+        <button class="run-btn run-btn-ghost mono">LinkedIn</button>
+      </a>
+      <a href="./Jose_Luis_Monteza_CV_FullStack_Developer.pdf" target="_blank" rel="noopener" style="text-decoration:none;">
+        <button class="run-btn run-btn-ghost mono" data-en="Download CV">Descargar CV</button>
+      </a>
     </div>
   </div>
 
 </main>
+
+<footer>
+  <span class="mono" data-en="Built by hand — no framework, no build step.">Hecho a mano — sin framework, sin paso de build.</span>
+  <span style="color:var(--zinc-800);margin:0 8px;">·</span>
+  <span class="mono">José Luis Monteza · Lima, Perú</span>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  var nodos = document.querySelectorAll('[data-en]');
+  var botonEs = document.getElementById('lang-es');
+  var botonEn = document.getElementById('lang-en');
+
+  // El español es el contenido que ya vive en el HTML: se guarda antes de
+  // tocar nada para poder volver a él sin recargar la página.
+  nodos.forEach(function (nodo) {
+    nodo.dataset.es = nodo.textContent.trim();
+  });
+
+  function aplicar(idioma) {
+    nodos.forEach(function (nodo) {
+      nodo.textContent = idioma === 'en' ? nodo.dataset.en : nodo.dataset.es;
+    });
+
+    document.documentElement.lang = idioma;
+    botonEs.setAttribute('aria-pressed', String(idioma === 'es'));
+    botonEn.setAttribute('aria-pressed', String(idioma === 'en'));
+
+    try { localStorage.setItem('idioma', idioma); } catch (e) { /* modo privado */ }
+  }
+
+  botonEs.addEventListener('click', function () { aplicar('es'); });
+  botonEn.addEventListener('click', function () { aplicar('en'); });
+
+  // Preferencia guardada; si no hay, se respeta el idioma del navegador.
+  var guardado = null;
+  try { guardado = localStorage.getItem('idioma'); } catch (e) { /* modo privado */ }
+
+  var inicial = guardado || ((navigator.language || 'es').toLowerCase().indexOf('es') === 0 ? 'es' : 'en');
+  if (inicial === 'en') { aplicar('en'); }
+})();
+</script>
+
 </body>
 </html>
