@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>José Luis Monteza | Backend &amp; Full-Stack Developer — .NET · React</title>
 
-<meta name="description" content="Desarrollador full-stack .NET y React. API de inventarios desplegada en Azure con JWT/RBAC, Clean Architecture y 57 pruebas — probable en vivo desde el navegador.">
+<meta name="description" content="Desarrollador full-stack .NET y React. Tres servicios desplegados en Azure — inventarios con JWT/RBAC y microservicios con SQL Server + Redis — probables en vivo desde el navegador.">
 <meta name="author" content="José Luis Monteza Milian">
 <meta name="theme-color" content="#030303">
 
 <!-- Open Graph: sin esto, compartir el enlace en LinkedIn o WhatsApp no muestra ninguna vista previa. -->
 <meta property="og:type" content="profile">
 <meta property="og:title" content="José Luis Monteza | Backend &amp; Full-Stack Developer">
-<meta property="og:description" content="API de inventarios en producción sobre Azure: Clean Architecture, JWT + RBAC y 57 pruebas. Pruébala en vivo desde el navegador.">
+<meta property="og:description" content="Tres servicios .NET corriendo en Azure: inventarios con ledger inmutable y JWT + RBAC, y microservicios de catálogo y carrito sobre SQL Server + Redis. Pruébalos en vivo desde el navegador.">
 <meta property="og:url" content="https://joseluismontezamilian12-rgb.github.io/portafolio-frontend/">
 <meta property="og:locale" content="es_PE">
 <meta property="og:locale:alternate" content="en_US">
@@ -522,12 +522,12 @@ footer {
       <div class="project-card">
         <div>
           <div style="margin-bottom:12px;">
-            <span class="project-card-badge badge-secondary mono" data-en="Backend · Distributed services">Backend · Servicios distribuidos</span>
+            <span class="project-card-badge badge-live mono" data-en="Backend · Live">Backend · En vivo</span>
           </div>
           <h3 style="font-size:18px;font-weight:500;margin-bottom:8px;">ECommerceEcosystem</h3>
           <p style="color:var(--zinc-400);font-size:13px;font-weight:300;line-height:1.6;"
-             data-en="Two independently deployable .NET services — Catalog (SQL Server) and Basket (Redis) — talking over HTTP. The basket re-reads every price from the catalog before saving, so a tampered client price never survives.">
-            Dos servicios .NET desplegables de forma independiente — Catálogo (SQL Server) y Carrito (Redis) — comunicados por HTTP. El carrito vuelve a leer cada precio del catálogo antes de guardar, así un precio manipulado desde el cliente nunca sobrevive.
+             data-en="Two independently deployable .NET services — Catalog (SQL Server) and Basket (Redis) — talking over HTTP, both live on Azure. The basket re-reads every price from the catalog before saving: send it a 1200 laptop priced at 1.00 and it answers 1200.">
+            Dos servicios .NET desplegables de forma independiente — Catálogo (SQL Server) y Carrito (Redis) — comunicados por HTTP, ambos en vivo sobre Azure. El carrito vuelve a leer cada precio del catálogo antes de guardar: mándale una laptop de 1200 a 1.00 y te responde 1200.
           </p>
         </div>
         <div class="skill-list mono">
@@ -541,12 +541,20 @@ footer {
         <div class="stat-grid mono" style="margin-top:auto;">
           <div><span data-en="Services">Servicios</span>: <span class="stat-val" data-en="2 autonomous">2 autónomos</span></div>
           <div><span data-en="Cache">Caché</span>: <span class="stat-val-cyan">Redis</span></div>
-          <div><span data-en="Entities">Entidades</span>: <span class="stat-val-green" data-en="immutable records">records inmutables</span></div>
-          <div><span data-en="Contracts">Contratos</span>: <span class="stat-val-indigo">DTOs</span></div>
+          <div><span data-en="Price">Precio</span>: <span class="stat-val-green" data-en="server-verified">verificado en servidor</span></div>
+          <div><span data-en="Deploy">Deploy</span>: <span class="stat-val-indigo">Azure</span></div>
         </div>
-        <a href="https://github.com/joseluismontezamilian12-rgb/ECommerceEcosystem" target="_blank" rel="noopener" style="text-decoration:none;">
-          <button class="run-btn run-btn-ghost mono" style="width:100%;padding:12px 0;" data-en="Source code">Código fuente</button>
-        </a>
+        <div style="display:flex;gap:10px;">
+          <a href="https://ecommerce-basket-lnxj7c.azurewebsites.net" target="_blank" rel="noopener" style="text-decoration:none;flex:1;">
+            <button class="run-btn run-btn-live mono" style="width:100%;padding:12px 0;" data-en="Basket">Carrito</button>
+          </a>
+          <a href="https://ecommerce-catalog-lnxj7c.azurewebsites.net" target="_blank" rel="noopener" style="text-decoration:none;flex:1;">
+            <button class="run-btn run-btn-ghost mono" style="width:100%;padding:12px 0;" data-en="Catalog">Catálogo</button>
+          </a>
+          <a href="https://github.com/joseluismontezamilian12-rgb/ECommerceEcosystem" target="_blank" rel="noopener" style="text-decoration:none;flex:1;">
+            <button class="run-btn run-btn-ghost mono" style="width:100%;padding:12px 0;" data-en="Code">Código</button>
+          </a>
+        </div>
       </div>
     </div>
 
@@ -627,7 +635,7 @@ footer {
             <div class="skill-list">
               <span class="skill-pill" style="color:var(--emerald-400);border-color:rgba(52,211,153,0.3);">SQL Server</span>
               <span class="skill-pill" style="color:var(--emerald-400);border-color:rgba(52,211,153,0.3);">Azure SQL</span>
-              <span class="skill-pill">Redis</span>
+              <span class="skill-pill" style="color:var(--emerald-400);border-color:rgba(52,211,153,0.3);">Redis</span>
               <span class="skill-pill">EF Migrations</span>
             </div>
           </div>
@@ -679,10 +687,10 @@ footer {
             <div class="mono" style="font-size:11px;color:var(--emerald-400);font-weight:500;"
                  data-en="2026 — Today">2026 — Actualidad</div>
             <h4 style="font-size:14px;font-weight:500;color:var(--zinc-100);margin:4px 0;"
-                data-en="Production allocation at Manzana Verde · SupplyChainCore live on Azure">Precantidades en Manzana Verde · SupplyChainCore desplegado en Azure</h4>
+                data-en="Production allocation at Manzana Verde · three .NET services live on Azure">Precantidades en Manzana Verde · tres servicios .NET en vivo sobre Azure</h4>
             <p style="color:var(--zinc-400);font-size:12px;font-weight:300;line-height:1.7;"
-               data-en="Automated a daily operational decision across a 7-kitchen network, backed by 176 tests. Took SupplyChainCore from repository to a running service: JWT with role-based authorization, PBKDF2 password hashing, containerisation and CI on every push.">
-              Automaticé una decisión operativa diaria en una red de 7 cocinas, respaldada por 176 pruebas. Llevé SupplyChainCore de repositorio a servicio corriendo: JWT con autorización por roles, hashing PBKDF2 de contraseñas, contenedorización y CI en cada push.
+               data-en="Automated a daily operational decision across a 7-kitchen network, backed by 176 tests. Took SupplyChainCore from repository to a running service — JWT with role-based authorization, PBKDF2 password hashing, containerisation and CI on every push — and then deployed the two ECommerceEcosystem services alongside it, with managed Redis for the baskets.">
+              Automaticé una decisión operativa diaria en una red de 7 cocinas, respaldada por 176 pruebas. Llevé SupplyChainCore de repositorio a servicio corriendo — JWT con autorización por roles, hashing PBKDF2 de contraseñas, contenedorización y CI en cada push — y después desplegué junto a él los dos servicios de ECommerceEcosystem, con Redis administrado para los carritos.
             </p>
           </div>
 
