@@ -327,8 +327,8 @@ footer {
           Construyo sistemas transaccionales en .NET y React: Clean Architecture, seguridad JWT + RBAC y reglas de negocio probadas. Estudiante de Ing. de Sistemas (6.° ciclo, UPN).
         </p>
         <p style="color:var(--zinc-500);font-weight:300;font-size:14px;line-height:1.7;margin-bottom:20px;max-width:440px;"
-           data-en="I came to software after 3+ years leading retail operations with SAP and Kronos, so my projects attack problems I have owned first-hand: inventory, shrinkage and demand planning.">
-          Llegué al software tras más de 3 años liderando operaciones en retail con SAP y Kronos, por eso mis proyectos atacan problemas que manejé en persona: inventarios, merma y planificación de demanda.
+           data-en="I came to software after 3+ years leading retail operations with SAP and Kronos, so my projects attack problems I have owned first-hand: inventory, shrinkage and demand planning. Today I build at Manzana Verde and, in parallel, deliver freelance projects in Node.js and front-end.">
+          Llegué al software tras más de 3 años liderando operaciones en retail con SAP y Kronos, por eso mis proyectos atacan problemas que manejé en persona: inventarios, merma y planificación de demanda. Hoy desarrollo en Manzana Verde y, en paralelo, entrego proyectos freelance en Node.js y front-end.
         </p>
         <div class="mono" style="display:flex;gap:10px;font-size:11px;flex-wrap:wrap;">
           <a href="https://github.com/joseluismontezamilian12-rgb" target="_blank" rel="noopener" class="btn-social btn-social-cyan">[ GITHUB ]</a>
@@ -413,17 +413,19 @@ footer {
   <div class="glass-box" style="padding:28px;">
     <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;margin-bottom:18px;">
       <div>
+        <p class="mono" style="font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber-400);margin-bottom:8px;"
+           data-en="Manzana Verde · Full-Stack Developer · Jul 2026 – Present">Manzana Verde · Desarrollador Full-Stack · Jul 2026 – Actual</p>
         <h3 style="font-size:20px;font-weight:500;"
-            data-en="Automating production allocation — Manzana Verde">Automatización de precantidades — Manzana Verde</h3>
+            data-en="Automating production allocation across 7 kitchens">Automatización de precantidades en 7 cocinas</h3>
         <p class="mono" style="font-size:11px;color:var(--zinc-500);margin-top:6px;"
-           data-en="Food-tech · 1.4M+ orders · Peru, Mexico, Colombia">Food-tech · +1.4M pedidos · Perú, México, Colombia</p>
+           data-en="Food-tech: healthy meal plans · 1.4M+ orders · Peru, Mexico, Colombia">Food-tech: planes de comida saludable · +1.4M pedidos · Perú, México, Colombia</p>
       </div>
-      <span class="project-card-badge badge-work mono" data-en="Proof of concept · private code">Prueba de concepto · código privado</span>
+      <span class="project-card-badge badge-work mono" data-en="Company code · private">Código de la empresa · privado</span>
     </div>
 
     <div style="color:var(--zinc-400);font-size:13px;font-weight:300;line-height:1.75;margin-bottom:20px;"
-         data-en="How many dishes each of the 7 partner kitchens should cook tomorrow was decided by hand. I automated that decision: each kitchen is scored on operational performance, demand is then routed by district adjacency under hard capacity caps, and every assignment can be traced back to the data that produced it. Built as a reusable TypeScript library exposed through a CLI, an API and a web screen — Operations tunes capacity, adjacency and demand in editable files, without a deployment.">
-      Cuántos platos debía cocinar al día siguiente cada una de las 7 cocinas aliadas se decidía a mano. Automaticé esa decisión: cada cocina recibe un score por desempeño operativo, luego la demanda se enruta por adyacencia de distritos bajo topes duros de capacidad, y cada asignación es trazable hasta los datos que la produjeron. Construido como librería TypeScript reutilizable, expuesta por CLI, API y pantalla web — Operaciones ajusta capacidad, adyacencia y demanda en archivos editables, sin desplegar.
+         data-en="How many dishes each of the 7 partner kitchens should cook tomorrow was decided by hand. I automated that decision: each kitchen is scored on operational performance, demand is then routed by district adjacency under hard capacity caps, and every assignment can be traced back to the data that produced it. Built as a reusable TypeScript library exposed through a CLI, an API and a web screen — the business team tunes capacity, adjacency and demand in editable files, without a deployment. SQL queries over the data lake feed the demand models and the team's reports.">
+      Cuántos platos debía cocinar al día siguiente cada una de las 7 cocinas aliadas se decidía a mano. Automaticé esa decisión: cada cocina recibe un score por desempeño operativo, luego la demanda se enruta por adyacencia de distritos bajo topes duros de capacidad, y cada asignación es trazable hasta los datos que la produjeron. Construido como librería TypeScript reutilizable, expuesta por CLI, API y pantalla web — el área usuaria ajusta capacidad, adyacencia y demanda en archivos editables, sin desplegar. Las consultas SQL sobre el data lake alimentan los modelos de demanda y los reportes del área.
     </div>
 
     <div class="kpi-row" style="margin-bottom:18px;">
@@ -433,10 +435,92 @@ footer {
       <div class="kpi"><div class="num">3</div><div class="lbl" data-en="Interfaces: CLI · API · web">Interfaces: CLI · API · web</div></div>
     </div>
 
+    <div class="skill-list mono" style="margin-bottom:16px;">
+      <span class="skill-pill">TypeScript</span>
+      <span class="skill-pill">Node.js</span>
+      <span class="skill-pill">Playwright</span>
+      <span class="skill-pill">SQL · data lake</span>
+      <span class="skill-pill" data-en="Automated testing">Pruebas automatizadas</span>
+    </div>
+
     <p style="color:var(--zinc-500);font-size:12px;font-weight:300;line-height:1.7;border-top:1px solid rgba(255,255,255,0.05);padding-top:16px;"
-       data-en="Validated against 25 days of real order data. It is a working proof of concept, pending rollout. The code belongs to the company and is not public, so the impact figures are not published here — happy to walk through the design and the trade-offs in an interview.">
-      Validado con 25 días de datos reales de pedidos. Es una prueba de concepto funcional, pendiente de despliegue. El código es de la empresa y no es público, por eso las cifras de impacto no se publican aquí — con gusto recorro el diseño y sus decisiones en una entrevista.
+       data-en="Impact quantified against 25 days of real order data. The code belongs to the company and is not public, and the figures are not yet cleared for publication — happy to walk through the design, the numbers and the trade-offs in an interview.">
+      Impacto cuantificado sobre 25 días de datos reales de pedidos. El código es de la empresa y no es público, y las cifras aún no están autorizadas para publicación — con gusto recorro el diseño, los números y sus decisiones en una entrevista.
     </p>
+  </div>
+
+  <div class="grid-12" style="align-items:stretch;margin-top:24px;">
+
+    <div class="col-4">
+      <div class="project-card">
+        <div>
+          <div style="margin-bottom:12px;">
+            <span class="project-card-badge badge-work mono" data-en="Internal tool · Aug 2026">Herramienta interna · Ago 2026</span>
+          </div>
+          <h3 style="font-size:18px;font-weight:500;margin-bottom:4px;"
+              data-en="Geographic prospecting scraper">Scraper de prospección geográfica</h3>
+          <p class="mono" style="font-size:10.5px;color:var(--zinc-500);margin-bottom:10px;"
+             data-en="Built for Manzana Verde's kitchen network">Construido para la red de cocinas de Manzana Verde</p>
+          <p style="color:var(--zinc-400);font-size:13px;font-weight:300;line-height:1.6;"
+             data-en="Walks Google Maps by locality with paginated scroll, opens every listing and extracts name, address, phone, rating, review count and lunch-hour foot traffic. Filters by a configurable minimum rating, tells mobile from landline by numbering pattern, and exports CSV plus an HTML report per zone. Replaced the manual search for venues.">
+            Recorre Google Maps por localidad con scroll paginado, entra a cada ficha y extrae nombre, dirección, teléfono, calificación, número de reseñas y afluencia en horario de almuerzo. Filtra por calificación mínima configurable, distingue celular de fijo por patrón de numeración y exporta CSV más un reporte HTML por zona. Reemplazó la búsqueda manual de locales.
+          </p>
+        </div>
+        <div class="skill-list mono" style="margin-top:auto;">
+          <span class="skill-pill">Node.js</span>
+          <span class="skill-pill">Playwright</span>
+          <span class="skill-pill" data-en="Browser automation">Automatización de navegador</span>
+          <span class="skill-pill">CSV</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div class="project-card">
+        <div>
+          <div style="margin-bottom:12px;">
+            <span class="project-card-badge badge-secondary mono" data-en="Freelance · Aug 2026 – Present">Freelance · Ago 2026 – Actual</span>
+          </div>
+          <h3 style="font-size:18px;font-weight:500;margin-bottom:4px;">Astro IA — INDIGO TAROT</h3>
+          <p class="mono" style="font-size:10.5px;color:var(--zinc-500);margin-bottom:10px;"
+             data-en="TikTok live-stream automation">Automatización de transmisiones en vivo de TikTok</p>
+          <p style="color:var(--zinc-400);font-size:13px;font-weight:300;line-height:1.6;"
+             data-en="End-to-end comment → reply → voice → avatar pipeline, built as independent modules tested in isolation: comment and gift reader, filters for what gets answered, priority queue, in-character reply engine, speech synthesis and an on/off panel. A per-stream cost counter caps API spend, and the client runs it without technical knowledge.">
+            Cadena completa comentario → respuesta → voz → avatar, construida como módulos independientes y probados por separado: lector de comentarios y regalos, filtros de qué se responde, cola de prioridad, motor de respuestas con personaje, síntesis de voz y panel de encendido/apagado. Un contador de costo por transmisión acota el gasto de API, y la clienta lo opera sin conocimientos técnicos.
+          </p>
+        </div>
+        <div class="skill-list mono" style="margin-top:auto;">
+          <span class="skill-pill">Node.js</span>
+          <span class="skill-pill">TikTok LIVE</span>
+          <span class="skill-pill" data-en="Speech synthesis">Síntesis de voz</span>
+          <span class="skill-pill" data-en="Modular architecture">Arquitectura modular</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div class="project-card">
+        <div>
+          <div style="margin-bottom:12px;">
+            <span class="project-card-badge badge-secondary mono" data-en="Freelance · Jun 2026">Freelance · Jun 2026</span>
+          </div>
+          <h3 style="font-size:18px;font-weight:500;margin-bottom:4px;">Kavea Travel</h3>
+          <p class="mono" style="font-size:10.5px;color:var(--zinc-500);margin-bottom:10px;"
+             data-en="Travel agency · final 3-page delivery">Agencia de viajes · entrega final de 3 páginas</p>
+          <p style="color:var(--zinc-400);font-size:13px;font-weight:300;line-height:1.6;"
+             data-en="Three-page site — home, experiences and trip planning — hand-coded from the client's brandboard, respecting its typography, palette and visual identity. Responsive layout with breakpoints at 1100 px and 768 px, delivered ready to publish.">
+            Sitio de tres páginas — inicio, experiencias y planificación de viaje — maquetado a mano a partir del brandboard de la clienta, respetando su tipografía, paleta e identidad visual. Maquetación responsive con puntos de quiebre en 1100 px y 768 px, entregado listo para publicar.
+          </p>
+        </div>
+        <div class="skill-list mono" style="margin-top:auto;">
+          <span class="skill-pill">HTML5</span>
+          <span class="skill-pill">CSS3</span>
+          <span class="skill-pill">Responsive</span>
+          <span class="skill-pill">Google Fonts</span>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <hr class="section-divider">
@@ -445,7 +529,7 @@ footer {
 
   <div class="grid-12" style="align-items:stretch;">
 
-    <div class="col-4">
+    <div class="col-6">
       <div class="project-card">
         <div>
           <div style="margin-bottom:12px;">
@@ -483,7 +567,7 @@ footer {
       </div>
     </div>
 
-    <div class="col-4">
+    <div class="col-6">
       <div class="project-card">
         <div>
           <div style="margin-bottom:12px;">
@@ -518,7 +602,7 @@ footer {
       </div>
     </div>
 
-    <div class="col-4">
+    <div class="col-6">
       <div class="project-card">
         <div>
           <div style="margin-bottom:12px;">
@@ -558,7 +642,7 @@ footer {
       </div>
     </div>
 
-    <div class="col-4">
+    <div class="col-6">
       <div class="project-card">
         <div>
           <div style="margin-bottom:12px;">
@@ -616,6 +700,7 @@ footer {
               <span class="skill-pill">Minimal APIs</span>
               <span class="skill-pill">LINQ · async/await</span>
               <span class="skill-pill">SOLID</span>
+              <span class="skill-pill">Node.js</span>
             </div>
           </div>
           <div>
@@ -627,6 +712,8 @@ footer {
               <span class="skill-pill">Tailwind CSS</span>
               <span class="skill-pill">Recharts</span>
               <span class="skill-pill">Canvas API</span>
+              <span class="skill-pill">HTML5 · CSS3</span>
+              <span class="skill-pill" data-en="Responsive design">Diseño responsive</span>
             </div>
           </div>
           <div>
@@ -644,6 +731,7 @@ footer {
                 data-en="Testing &amp; delivery">Testing y entrega</h4>
             <div class="skill-list">
               <span class="skill-pill">xUnit · Moq</span>
+              <span class="skill-pill">Playwright</span>
               <span class="skill-pill">GitHub Actions</span>
               <span class="skill-pill">Docker</span>
               <span class="skill-pill">Azure App Service</span>
@@ -657,6 +745,16 @@ footer {
             <div class="skill-list">
               <span class="skill-pill" style="color:var(--amber-400);border-color:rgba(251,191,36,0.3);">SAP · Logística</span>
               <span class="skill-pill" style="color:var(--amber-400);border-color:rgba(251,191,36,0.3);">Kronos · RRHH</span>
+            </div>
+          </div>
+          <div>
+            <h4 class="mono" style="font-size:11px;color:var(--zinc-500);margin-bottom:8px;text-transform:uppercase;"
+                data-en="AI-assisted engineering">Ingeniería asistida por IA</h4>
+            <div class="skill-list">
+              <span class="skill-pill">GitHub Copilot</span>
+              <span class="skill-pill">Cursor</span>
+              <span class="skill-pill">Claude Code</span>
+              <span class="skill-pill">Prompt engineering</span>
             </div>
           </div>
           <div>
@@ -681,49 +779,75 @@ footer {
             data-en="From running operations to building the systems that run them">De operar el negocio a construir los sistemas que lo operan</h3>
 
         <div style="position:relative;border-left:1px solid var(--zinc-800);padding-left:24px;margin-left:8px;">
-
-          <div style="position:relative;margin-bottom:28px;">
+          <div style="position:relative;margin-bottom:24px;">
             <span style="position:absolute;left:-29px;top:4px;width:9px;height:9px;border-radius:50%;background:var(--emerald-400);box-shadow:0 0 10px var(--emerald-400);"></span>
             <div class="mono" style="font-size:11px;color:var(--emerald-400);font-weight:500;"
-                 data-en="2026 — Today">2026 — Actualidad</div>
+                 data-en="Jul 2026 — Present">Jul 2026 — Actualidad</div>
             <h4 style="font-size:14px;font-weight:500;color:var(--zinc-100);margin:4px 0;"
-                data-en="Production allocation at Manzana Verde · three .NET services live on Azure">Precantidades en Manzana Verde · tres servicios .NET en vivo sobre Azure</h4>
+                data-en="Full-Stack Developer · Manzana Verde">Desarrollador Full-Stack · Manzana Verde</h4>
             <p style="color:var(--zinc-400);font-size:12px;font-weight:300;line-height:1.7;"
-               data-en="Automated a daily operational decision across a 7-kitchen network, backed by 176 tests. Took SupplyChainCore from repository to a running service — JWT with role-based authorization, PBKDF2 password hashing, containerisation and CI on every push — and then deployed the two ECommerceEcosystem services alongside it, with managed Redis for the baskets.">
-              Automaticé una decisión operativa diaria en una red de 7 cocinas, respaldada por 176 pruebas. Llevé SupplyChainCore de repositorio a servicio corriendo — JWT con autorización por roles, hashing PBKDF2 de contraseñas, contenedorización y CI en cada push — y después desplegué junto a él los dos servicios de ECommerceEcosystem, con Redis administrado para los carritos.
+               data-en="Production-allocation engine for 7 kitchens with 176 automated tests, SQL queries over the data lake, and an internal Node.js + Playwright scraper to prospect venues.">
+              Motor de precantidades para 7 cocinas con 176 pruebas automatizadas, consultas SQL sobre el data lake y un scraper interno en Node.js + Playwright para prospectar locales.
             </p>
           </div>
 
-          <div style="position:relative;margin-bottom:28px;">
+          <div style="position:relative;margin-bottom:24px;">
+            <span style="position:absolute;left:-29px;top:4px;width:9px;height:9px;border-radius:50%;background:var(--indigo-400);box-shadow:0 0 10px rgba(129,140,248,0.6);"></span>
+            <div class="mono" style="font-size:11px;color:var(--indigo-400);font-weight:500;"
+                 data-en="Aug 2026 — Present">Ago 2026 — Actualidad</div>
+            <h4 style="font-size:14px;font-weight:500;color:var(--zinc-100);margin:4px 0;"
+                data-en="Freelance Developer · INDIGO TAROT">Desarrollador Freelance · INDIGO TAROT</h4>
+            <p style="color:var(--zinc-400);font-size:12px;font-weight:300;line-height:1.7;"
+               data-en="“Astro IA”: modular TikTok live-stream automation in Node.js, with per-stream cost control.">
+              «Astro IA»: automatización modular de transmisiones en vivo de TikTok en Node.js, con control de costo por transmisión.
+            </p>
+          </div>
+
+          <div style="position:relative;margin-bottom:24px;">
             <span style="position:absolute;left:-29px;top:4px;width:9px;height:9px;border-radius:50%;background:var(--cyan-400);box-shadow:0 0 10px var(--cyan-500);"></span>
-            <div class="mono" style="font-size:11px;color:var(--cyan-400);font-weight:500;">2026</div>
+            <div class="mono" style="font-size:11px;color:var(--cyan-400);font-weight:500;"
+                 data-en="Apr — Jul 2026">Abr — Jul 2026</div>
             <h4 style="font-size:14px;font-weight:500;color:var(--zinc-100);margin:4px 0;"
-                data-en="Merma AI, piloted in a real store">Merma AI, piloteado en una tienda real</h4>
+                data-en="Full-Stack Developer · Pickadeli">Desarrollador Full-Stack · Pickadeli</h4>
             <p style="color:var(--zinc-400);font-size:12px;font-weight:300;line-height:1.7;"
-               data-en="Built my own tool while managing the store and ran it against its real 78-SKU catalog — the first time my code decided something a business acted on.">
-              Construí mi propia herramienta mientras gerenciaba la tienda y la corrí con su catálogo real de 78 SKUs — la primera vez que mi código decidió algo sobre lo que el negocio actuó.
+               data-en="Built and piloted Merma AI against the real 78-SKU catalog: gathered requirements with the users, put it into production in the store and iterated on it through daily use — the first time my code decided something a business acted on.">
+              Construí y piloteé Merma AI con el catálogo real de 78 SKUs: levanté requisitos con los usuarios, la puse en producción en la tienda y la iteré con su uso diario — la primera vez que mi código decidió algo sobre lo que el negocio actuó.
             </p>
           </div>
 
-          <div style="position:relative;margin-bottom:28px;">
-            <span style="position:absolute;left:-29px;top:4px;width:9px;height:9px;border-radius:50%;background:var(--zinc-700);"></span>
-            <div class="mono" style="font-size:11px;color:var(--zinc-500);">2025</div>
+          <div style="position:relative;margin-bottom:24px;">
+            <span style="position:absolute;left:-29px;top:4px;width:9px;height:9px;border-radius:50%;background:var(--zinc-600);"></span>
+            <div class="mono" style="font-size:11px;color:var(--zinc-400);font-weight:500;"
+                 data-en="Jun 2026">Jun 2026</div>
             <h4 style="font-size:14px;font-weight:500;color:var(--zinc-300);margin:4px 0;"
-                data-en="Distributed services and real-time interfaces">Servicios distribuidos e interfaces en tiempo real</h4>
+                data-en="Freelance Web Developer · Kavea Travel">Desarrollador Web Freelance · Kavea Travel</h4>
             <p style="color:var(--zinc-500);font-size:12px;font-weight:300;line-height:1.7;"
-               data-en="ECommerceEcosystem: two .NET services with polyglot persistence (SQL Server + Redis). ECS Dashboard: React and Vite with 60 Hz telemetry on canvas.">
-              ECommerceEcosystem: dos servicios .NET con persistencia políglota (SQL Server + Redis). ECS Dashboard: React y Vite con telemetría a 60 Hz sobre canvas.
+               data-en="Three-page site for a travel agency, hand-coded from the client's brandboard.">
+              Sitio de tres páginas para una agencia de viajes, maquetado a mano desde el brandboard de la clienta.
+            </p>
+          </div>
+
+          <div style="position:relative;margin-bottom:24px;">
+            <span style="position:absolute;left:-29px;top:4px;width:9px;height:9px;border-radius:50%;background:var(--zinc-700);"></span>
+            <div class="mono" style="font-size:11px;color:var(--zinc-500);font-weight:500;"
+                 data-en="May 2019 — Apr 2026">May 2019 — Abr 2026</div>
+            <h4 style="font-size:14px;font-weight:500;color:var(--zinc-300);margin:4px 0;"
+                data-en="Retail and food service operations">Operaciones en retail y food service</h4>
+            <p style="color:var(--zinc-500);font-size:12px;font-weight:300;line-height:1.7;"
+               data-en="Boba Station, Plaza Vea, Ten Ren, Chinawok / Bembos and COESTI. Teams of 15 to 30 people, sales KPIs, cash and inventory on SAP and Kronos. Automated the store's operational reporting — that is what led me into software.">
+              Boba Station, Plaza Vea, Ten Ren, Chinawok / Bembos y COESTI. Equipos de 15 a 30 personas, KPIs de venta, caja e inventario en SAP y Kronos. Automaticé los reportes operativos de la tienda — de ahí salió mi paso al software.
             </p>
           </div>
 
           <div style="position:relative;">
             <span style="position:absolute;left:-29px;top:4px;width:9px;height:9px;border-radius:50%;background:var(--zinc-800);"></span>
-            <div class="mono" style="font-size:11px;color:var(--zinc-600);">2024</div>
+            <div class="mono" style="font-size:11px;color:var(--zinc-600);font-weight:500;"
+                 data-en="2025 — Present">2025 — Actualidad</div>
             <h4 style="font-size:14px;font-weight:500;color:var(--zinc-400);margin:4px 0;"
-                data-en="Foundations: databases, algorithms and web">Fundamentos: bases de datos, algoritmos y web</h4>
+                data-en="B.Eng. Systems Engineering · UPN">Ingeniería de Sistemas · UPN</h4>
             <p style="color:var(--zinc-600);font-size:12px;font-weight:300;line-height:1.7;"
-               data-en="First projects in C#, relational modelling with SQL Server, and the start of Systems Engineering at UPN.">
-              Primeros proyectos en C#, modelado relacional con SQL Server e inicio de Ingeniería de Sistemas en UPN.
+               data-en="Software Design &amp; Architecture, Advanced Data Structures, Advanced Databases and Agile Methodologies. Before: technical program in Accounting at Certus (2020 – 2021).">
+              Diseño y Arquitectura de Software, Estructuras de Datos Avanzadas, Bases de Datos Avanzadas y Metodologías Ágiles. Antes: carrera técnica de Contabilidad en Certus (2020 – 2021).
             </p>
           </div>
         </div>
@@ -791,7 +915,7 @@ footer {
       <a href="https://www.linkedin.com/in/joseluismonteza" target="_blank" rel="noopener" style="text-decoration:none;">
         <button class="run-btn run-btn-ghost mono">LinkedIn</button>
       </a>
-      <a href="./Jose_Luis_Monteza_CV_FullStack_Developer.pdf" target="_blank" rel="noopener" style="text-decoration:none;">
+      <a href="./Jose_Luis_Monteza_CV_FullStack_Developer_ES.pdf" data-href-en="./Jose_Luis_Monteza_CV_FullStack_Developer.pdf" target="_blank" rel="noopener" style="text-decoration:none;">
         <button class="run-btn run-btn-ghost mono" data-en="Download CV">Descargar CV</button>
       </a>
     </div>
@@ -819,9 +943,18 @@ footer {
     nodo.dataset.es = nodo.textContent.trim();
   });
 
+  // Enlaces que cambian de destino según el idioma (el CV en español o en inglés).
+  var enlaces = document.querySelectorAll('[data-href-en]');
+  enlaces.forEach(function (enlace) {
+    enlace.dataset.hrefEs = enlace.getAttribute('href');
+  });
+
   function aplicar(idioma) {
     nodos.forEach(function (nodo) {
       nodo.textContent = idioma === 'en' ? nodo.dataset.en : nodo.dataset.es;
+    });
+    enlaces.forEach(function (enlace) {
+      enlace.setAttribute('href', idioma === 'en' ? enlace.dataset.hrefEn : enlace.dataset.hrefEs);
     });
 
     document.documentElement.lang = idioma;
