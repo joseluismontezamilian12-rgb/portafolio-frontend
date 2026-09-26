@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>José Luis Monteza | Backend &amp; Full-Stack Developer — .NET · React</title>
 
-<meta name="description" content="Desarrollador full-stack .NET y React. Tres servicios desplegados en Azure — inventarios con JWT/RBAC y microservicios con SQL Server + Redis — se pueden probar en vivo desde el navegador.">
+<meta name="description" content="Desarrollador full-stack .NET, React y TypeScript. Tres servicios .NET en vivo sobre Azure y Odontario, un SaaS propio para consultorios dentales en producción — todo se puede probar desde el navegador.">
 <meta name="author" content="José Luis Monteza Milian">
 <meta name="theme-color" content="#030303">
 
 <!-- Open Graph: sin esto, compartir el enlace en LinkedIn o WhatsApp no muestra ninguna vista previa. -->
 <meta property="og:type" content="profile">
 <meta property="og:title" content="José Luis Monteza | Backend &amp; Full-Stack Developer">
-<meta property="og:description" content="Tres servicios .NET corriendo en Azure: inventarios con ledger inmutable y JWT + RBAC, y microservicios de catálogo y carrito sobre SQL Server + Redis. Pruébalos en vivo desde el navegador.">
+<meta property="og:description" content="Tres servicios .NET corriendo en Azure —inventarios con ledger inmutable y JWT + RBAC, catálogo y carrito sobre SQL Server + Redis— y Odontario, un SaaS propio para consultorios dentales. Pruébalos en vivo desde el navegador.">
 <meta property="og:url" content="https://joseluismontezamilian12-rgb.github.io/portafolio-frontend/">
 <meta property="og:locale" content="es_PE">
 <meta property="og:locale:alternate" content="en_US">
@@ -327,8 +327,8 @@ footer {
           Construyo sistemas transaccionales en .NET y React: Clean Architecture, seguridad JWT + RBAC y reglas de negocio probadas. Estudiante de Ing. de Sistemas (6.° ciclo, UPN).
         </p>
         <p style="color:var(--zinc-500);font-weight:300;font-size:14px;line-height:1.7;margin-bottom:20px;max-width:440px;"
-           data-en="I came to software after 3+ years leading retail operations with SAP and Kronos, so my projects attack problems I have owned first-hand: inventory, shrinkage and demand planning. Today I build at Manzana Verde and, in parallel, deliver freelance projects in Node.js and front-end.">
-          Llegué al software tras más de 3 años liderando operaciones en retail con SAP y Kronos, por eso mis proyectos atacan problemas que manejé en persona: inventarios, merma y planificación de demanda. Hoy desarrollo en Manzana Verde y, en paralelo, entrego proyectos freelance en Node.js y front-end.
+           data-en="I came to software after 3+ years leading retail operations with SAP and Kronos, so my projects attack problems I have owned first-hand: inventory, shrinkage and demand planning. Today I build at Manzana Verde, run Odontario — my own SaaS for dental practices — and deliver freelance projects in Node.js and front-end.">
+          Llegué al software tras más de 3 años liderando operaciones en retail con SAP y Kronos, por eso mis proyectos atacan problemas que manejé en persona: inventarios, merma y planificación de demanda. Hoy desarrollo en Manzana Verde, opero Odontario —mi propio SaaS para consultorios dentales— y entrego proyectos freelance en Node.js y front-end.
         </p>
         <div class="mono" style="display:flex;gap:10px;font-size:11px;flex-wrap:wrap;">
           <a href="https://github.com/joseluismontezamilian12-rgb" target="_blank" rel="noopener" class="btn-social btn-social-cyan">[ GITHUB ]</a>
@@ -521,6 +521,63 @@ footer {
       </div>
     </div>
 
+  </div>
+
+  <hr class="section-divider">
+
+  <div class="section-label mono" data-en="// Own product">// Producto propio</div>
+
+  <div class="glass-box" style="padding:28px;border-color:rgba(52,211,153,0.14);">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;margin-bottom:18px;">
+      <div>
+        <p class="mono" style="font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--emerald-400);margin-bottom:8px;"
+           data-en="SaaS · Designed, built and operated end to end · 2026 – Present">SaaS · Diseñado, construido y operado de punta a punta · 2026 – Actual</p>
+        <h3 style="font-size:24px;font-weight:500;"
+            data-en="Odontario — management software for dental practices">Odontario — gestión para consultorios dentales</h3>
+        <p class="mono" style="font-size:11px;color:var(--zinc-500);margin-top:6px;"
+           data-en="Practices with 1 to 3 dentists in Peru · monthly subscription · private code">Consultorios de 1 a 3 dentistas en Perú · suscripción mensual · código privado</p>
+      </div>
+      <span class="project-card-badge badge-live mono" data-en="In production">En producción</span>
+    </div>
+
+    <div class="grid-12" style="gap:24px;">
+      <div class="col-7">
+        <p style="color:var(--zinc-400);font-size:13px;font-weight:300;line-height:1.75;margin-bottom:14px;"
+           data-en="A web system I sell by subscription: appointments per doctor, clinical records under Peru's NTS 139 with ICD-10, an odontogram that follows NTS 188, treatment plans and quotes, payments (cash, Yape, Plin, card, transfer) with a daily cash register, an accounts-receivable view with the WhatsApp message ready, specialist payouts, and users with role-based permissions. A dentist signs up on their own and is inside the system with a 15-day trial.">
+          Sistema web que vendo por suscripción: agenda por doctor, historia clínica según la NTS 139 con CIE-10, odontograma según la NTS 188, planes de tratamiento y presupuestos, pagos (efectivo, Yape, Plin, tarjeta, transferencia) con caja del día, "Por cobrar" con el WhatsApp listo, liquidación de especialistas y usuarios con permisos por rol. El dentista se registra solo y entra en el momento con 15 días de prueba.
+        </p>
+        <p style="color:var(--zinc-500);font-size:12.5px;font-weight:300;line-height:1.75;"
+           data-en="It handles health data, so the engineering is about trust: every practice only sees its own data and reception never sees the clinical record; money is stored in cents; a daily backup leaves encrypted with AES-256-GCM for another data centre through an S3 client I wrote without libraries (SigV4 checked against the AWS reference example), and a restore drill brings the system up on that copy; a health endpoint is monitored every 5 minutes. The public demo gives each visitor a private copy of a sample practice, wiped at 3 a.m. Lima time.">
+          Maneja datos de salud, así que la ingeniería gira en torno a la confianza: cada consultorio ve solo lo suyo y recepción nunca ve la historia clínica; el dinero se guarda en céntimos; una copia diaria sale cifrada con AES-256-GCM a otro centro de datos mediante un cliente S3 escrito sin librerías (firma SigV4 comprobada con el ejemplo oficial de AWS), y un ensayo de recuperación levanta el sistema sobre esa copia; una ruta de salud se monitorea cada 5 minutos. La demo pública le da a cada visitante su propia copia de un consultorio de ejemplo, que se borra a las 3 a. m. de Lima.
+        </p>
+      </div>
+      <div class="col-5" style="display:flex;flex-direction:column;gap:16px;">
+        <div class="kpi-row" style="grid-template-columns:repeat(2,1fr);">
+          <div class="kpi"><div class="num">129</div><div class="lbl" data-en="Automated tests">Pruebas automatizadas</div></div>
+          <div class="kpi"><div class="num">~22k</div><div class="lbl" data-en="Lines of TypeScript">Líneas de TypeScript</div></div>
+          <div class="kpi"><div class="num">NTS 188</div><div class="lbl" data-en="MINSA odontogram">Odontograma MINSA</div></div>
+          <div class="kpi"><div class="num">AES-256</div><div class="lbl" data-en="Encrypted backups">Copias cifradas</div></div>
+        </div>
+        <div class="skill-list mono">
+          <span class="skill-pill">TypeScript</span>
+          <span class="skill-pill">Node.js 24</span>
+          <span class="skill-pill">Express 5</span>
+          <span class="skill-pill">SQLite</span>
+          <span class="skill-pill">React 19</span>
+          <span class="skill-pill">Vite</span>
+          <span class="skill-pill">Docker</span>
+          <span class="skill-pill">Railway</span>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:auto;">
+          <a href="https://odontario-demo-production.up.railway.app" target="_blank" rel="noopener" style="text-decoration:none;flex:1;">
+            <button class="run-btn run-btn-live mono" style="width:100%;padding:12px 0;" data-en="Try the demo">Probar la demo</button>
+          </a>
+          <a href="https://odontario.up.railway.app" target="_blank" rel="noopener" style="text-decoration:none;flex:1;">
+            <button class="run-btn run-btn-ghost mono" style="width:100%;padding:12px 0;" data-en="Product site">Sitio del producto</button>
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 
   <hr class="section-divider">
@@ -788,6 +845,18 @@ footer {
             <p style="color:var(--zinc-400);font-size:12px;font-weight:300;line-height:1.7;"
                data-en="Production-allocation engine for 7 kitchens with 176 automated tests, SQL queries over the data lake, and an internal Node.js + Playwright scraper to prospect venues.">
               Motor de precantidades para 7 cocinas con 176 pruebas automatizadas, consultas SQL sobre el data lake y un scraper interno en Node.js + Playwright para prospectar locales.
+            </p>
+          </div>
+
+          <div style="position:relative;margin-bottom:24px;">
+            <span style="position:absolute;left:-29px;top:4px;width:9px;height:9px;border-radius:50%;background:var(--emerald-400);box-shadow:0 0 10px var(--emerald-400);"></span>
+            <div class="mono" style="font-size:11px;color:var(--emerald-400);font-weight:500;"
+                 data-en="2026 — Present">2026 — Actualidad</div>
+            <h4 style="font-size:14px;font-weight:500;color:var(--zinc-100);margin:4px 0;"
+                data-en="Founder and developer · Odontario">Fundador y desarrollador · Odontario</h4>
+            <p style="color:var(--zinc-400);font-size:12px;font-weight:300;line-height:1.7;"
+               data-en="My own SaaS for dental practices in Peru, in production: self-service sign-up, clinical records under MINSA standards, encrypted backups and 129 automated tests.">
+              SaaS propio para consultorios dentales en Perú, en producción: registro autoservicio, historia clínica según normas del MINSA, copias cifradas y 129 pruebas automatizadas.
             </p>
           </div>
 
