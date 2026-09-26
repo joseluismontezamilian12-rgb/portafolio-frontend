@@ -7,8 +7,8 @@ Portafolio de una sola página, bilingüe (español / inglés), hecho a mano: un
 ## Qué muestra
 
 - **SupplyChainCore** como proyecto principal, con la API en vivo en Azure y credenciales de solo lectura para probarla en 30 segundos.
-- **Trabajo profesional:** el motor de precantidades de Manzana Verde, el scraper de prospección, Astro IA y Kavea Travel.
 - **Producto propio:** Odontario, SaaS para consultorios dentales en producción, con demo pública.
+- **Trabajo profesional:** el soporte informático al JNE, el motor de precantidades de Manzana Verde, el scraper de prospección, Astro IA y Kavea Travel.
 - **Proyectos de ingeniería:** SupplyChainCore, Merma AI, ECommerceEcosystem y ECS Dashboard, cada uno con demo y código.
 - **Decisiones de ingeniería** que enlazan al archivo exacto que las implementa.
 - **CV descargable** en español y en inglés; el botón sigue el idioma elegido.
